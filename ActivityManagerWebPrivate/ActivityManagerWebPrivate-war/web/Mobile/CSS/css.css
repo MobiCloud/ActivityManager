@@ -7,13 +7,14 @@ body
 #login_upper
 {
     background-color: #bc1d1d;
-    height: 200px;
+    height: 70%;
     text-align: center;
-    padding-top:20px;
+    padding-top:3%;
 }
 
 #login_mid
 {
+    margin-top: -5px;
     height:99px;
     background-image: url("../images/upper_back.jpg");
     background-repeat: repeat-x;
@@ -29,24 +30,27 @@ body
 {
     width: 80%;
     background-color: #bc1d1d;
-    height: 30px;
-    line-height: 30px;
+    height: 0.6in;
     border-bottom-color: #000000;
     border-bottom-style: none;
     border-width: 1px;
     color:#ffffff;
     font-weight: bold;
+    font-size: 0.3in;
 }
 
 .login_input
 {
     width: 80%;
+    height: 0.4in;
+    font-size: 0.2in;
 }
 
 #login_form
 {
     text-align: center;
     color: #ffffff;
+    font-size: 0.3in;
 }
 
 #login_buttom
@@ -54,11 +58,14 @@ body
     text-align: center;
     font-weight: bold;
     color: #ffffff;
+    font-size: 0.4in;
 }
 
 .register_input
 {
     width: 80%;
+    height: 0.4in;
+    font-size: 0.2in;
 }
 
 #register_OK
@@ -68,8 +75,8 @@ body
     color: #ffffff;
     text-align: center;
     font-weight: bold;
-    height: 30px;
-    line-height: 30px;
+    font-size: 0.3in;
+    height: 0.6in;
     border-bottom-color: #000000;
     border-bottom-style: none;
     border-width: 1px;
@@ -81,8 +88,8 @@ body
     color: #ffffff;
     text-align: center;
     font-weight: bold;
-    height: 30px;
-    line-height: 30px;
+    font-size: 0.3in;
+    height: 0.6in;
     border-bottom-color: #000000;
     border-bottom-style: none;
     border-width: 1px;
@@ -92,10 +99,12 @@ body
 {
     margin: auto;
     color: #ffffff;
+    font-size: 0.3in;
 }
 
 #register_mid
 {
+    margin-top: -5px;
     background-image: url("../images/register_mid.jpg");
     background-repeat: repeat-x;
     height: 31px;

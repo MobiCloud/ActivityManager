@@ -7,13 +7,14 @@ body
 #menu_upper
 {
     background-color: #bc1d1d;
-    height: 120px;
+    height: 50%;
     text-align: center;
     padding-top:5px;
 }
 
 #menu_mid
 {
+    margin-top: -5px;
     height:99px;
     background-image: url("../images/upper_back.jpg");
     background-repeat: repeat-x;
@@ -22,7 +23,13 @@ body
 .menu_items
 {
     text-align: right;
-    font-size:xx-large;
+    font-size: 1.0in;
     padding-right: 20px;
+    color: #ffffff;
+}
+
+a:link
+{
+    text-decoration: none;
     color: #ffffff;
 }
