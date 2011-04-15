@@ -1,7 +1,7 @@
 <%-- 
     Document   : Login
     Created on : Dec 7, 2010, 2:15:03 PM
-    Author     : Fred Morstatter
+    Author     : Fred Morstatter, Guofu Xiong
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -16,7 +16,7 @@
     </head>
     <body>
         <div id="login_upper">
-            <img alt="logo"  src="images/upper_logo.jpg" border="0" height="200px">
+            <img alt="logo"  src="images/upper_logo.jpg" border="0" style="width:70%;">
         </div>
         <div id="login_mid">
         </div>

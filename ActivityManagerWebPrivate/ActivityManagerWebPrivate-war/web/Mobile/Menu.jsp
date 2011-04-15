@@ -1,7 +1,7 @@
 <%-- 
     Document   : Menu
     Created on : Dec 7, 2010, 2:38:36 PM
-    Author     : Fred Morstatter
+    Author     : Fred Morstatter, Guofu Xiong
 --%>
 
 <%@page import="edu.asu.edu.snac.activitymanager.util.CheckLoggedIn"%>
@@ -20,17 +20,17 @@
     </head>
     <body>
         <div id="menu_upper">
-            <img alt="logo"  src="images/menu_upper.jpg" border="0" height="120px">
+            <img alt="logo"  src="images/menu_upper.jpg" border="0" style="height: 45%">
         </div>
         <div id="menu_mid">
         </div>
         <div>
             <hr/>
-        <div class="menu_items"><a href="WishList.jsp"><img alt="logo"  src="images/menu_mywish.jpg" border="0"></a></div>
+        <div class="menu_items"><a href="WishList.jsp">My Wishes</a></div>
             <hr/>
-        <div class="menu_items"><a href="InviteList.jsp"><img alt="logo"  src="images/menu_myinvitation.jpg" border="0"></a></div>
+        <div class="menu_items"><a href="InviteList.jsp">My Invitations</a></div>
             <hr/>
-        <div class="menu_items"><a href="AllInvitations.jsp"><img alt="logo"  src="images/menu_all.jpg" border="0"></a></div>
+        <div class="menu_items"><a href="AllInvitations.jsp">All Invitations</a></div>
             <hr/>
         </div>
     </body>

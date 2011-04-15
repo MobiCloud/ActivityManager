@@ -1,7 +1,7 @@
 <%-- 
     Document   : Register
     Created on : Dec 7, 2010, 3:43:17 PM
-    Author     : Fred
+    Author     : Fred, Guofu
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -14,8 +14,8 @@
         <link rel="stylesheet" type="text/css" href="CSS/css.css" />
     </head>
     <body>
-        <div id="register_upper"  style="height: 60px; background-color:#bc1d1d; text-align: center; padding-top: 10px;">
-            <img alt="re_upper"  src="images/register_upper.jpg" border="0"/>
+        <div id="register_upper" style="height: 70%; background-color:#bc1d1d; text-align: center; ">
+            <img alt="re_upper"  src="images/register_upper.jpg" border="0" style="width:70%;"/>
         </div>
         <div id="register_mid">
         </div>
