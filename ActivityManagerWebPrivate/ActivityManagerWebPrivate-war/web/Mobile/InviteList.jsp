@@ -21,8 +21,14 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title><%= loggedInUser%>'s Invitations</title>
+		<link rel="stylesheet" type="text/css" href="CSS/invitationList.css" />
     </head>
     <body>
+	<div id="invitationList_upper">
+    </div>
+    <div id="invitationList_mid">
+    </div>
+    <div id="invitationList_table">
         <a href="NewInvitation.jsp">New Invitation</a>
         <br/><br/>
         <%
@@ -61,5 +67,6 @@
             }//close the for
         %>
         </table>
+		</div>		
     </body>
 </html>

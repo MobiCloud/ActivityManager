@@ -20,10 +20,14 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>All Invitations</title>
+		<link rel="stylesheet" type="text/css" href="CSS/invitation.css" />
     </head>
     <body>
-
-
+    <div id="invitation_upper">
+    </div>
+    <div id="invitation_mid">
+    </div>
+    <div id="invitation_table">
         <%
         //get the wishes
         GetAllInvitationMessagePublicVM rwm = new GetAllInvitationMessagePublicVM();
@@ -63,5 +67,6 @@
             }//close the for
         %>
         </table>
+		</div>
     </body>
 </html>

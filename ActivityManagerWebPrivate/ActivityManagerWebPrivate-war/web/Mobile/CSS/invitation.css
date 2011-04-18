@@ -1,0 +1,26 @@
+body
+{
+    background-color: #000000;
+    margin:0px;
+}
+
+#invitation_upper
+{
+    background-color: #bc1d1d;
+    height: 70%;
+    text-align: center;
+    padding-top:3%;
+}
+
+#invitation_mid
+{
+    margin-top: -5px;
+    height:99px;
+    background-image: url("../images/upper_back.jpg");
+    background-repeat: repeat-x;
+}
+
+#invitation_mid
+{
+	
+}
