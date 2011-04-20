@@ -33,3 +33,8 @@ a:link
     text-decoration: none;
     color: #ffffff;
 }
+
+a:visited
+{
+    color: #ffffff;
+}

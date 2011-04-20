@@ -21,10 +21,17 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title><%= loggedInUser%>'s Wish List</title>
+        <link rel="stylesheet" type="text/css" href="CSS/wishList.css" />
     </head>
     <body>
-        <a href="NewWish.jsp">Add New Wish</a><br/><br/>
-
+    <div id="wish_upper">
+            <img alt="logo"  src="images/my_wish.jpg" border="0" style="width:70%;">
+    </div>
+    <div id="wish_mid">
+    </div>
+    <div id="wish_form">
+        <hr/>
+        <a href="NewWish.jsp">Add New Wish</a>
         <%
         //get the wishes
         ReqWishMessage rwm = new ReqWishMessage();
@@ -32,39 +39,28 @@
 
         WishListMessage wishes = (WishListMessage)MessageSender.sendMessage(rwm);
         %>
-        <table border="1">
-            <th>Sport</th>
-            <th>Date</th>
-            <th>Start Time</th>
-            <th>End Time</th>
-            <th>Location</th>
+        
         <%
-        int length = 0;
-        WishItem[] wishList = null;
-            try{
-                length = wishes.getAllWishes().length;
-                wishList = wishes.getAllWishes();
-
-            }catch(NullPointerException npe)
-            {
-                out.println( "Wish List Threw an Exception" );
-                npe.printStackTrace();
-            }
-
-            for(int i = 0; i < length; i++){
-                WishItem tmp = wishList[i];
+            for(int i = 0; i < wishes.getAllWishes().length; i++){
+                WishItem tmp = wishes.getAllWishes()[i];
         %>
-        <tr>
-            <td><%= tmp.getSport() %></td>
-            <td><%= tmp.getDate() %></td>
-            <td><%= tmp.getStarttime() %></td>
-            <td><%= tmp.getEndtime() %></td>
-            <td><%= tmp.getLocation() %></td>
-        </tr>
+        <hr/>
+        <table align="center">
+            <tr>
+                <td   align="left" width="40%">Sport type: <%= tmp.getSport() %></td><td   align="left"  width="40%">Date: <%= tmp.getDate() %></td>
+            </tr>
+            <tr>
+                <td   align="left" width="40%">Start time: <%= tmp.getStarttime() %></td><td   align="left" width="40%">End time: <%= tmp.getEndtime() %></td>
+            </tr>
+            <tr>
+                <td   align="left" width="40%">Activity location: <%= tmp.getLocation() %></td><td   align="left" width="40%"></td>
+            </tr>
+            </table>
         <%
             }//close the for
         %>
-        </table>
-        
+    <hr/>
+    <input type="button" onclick="window.location='Menu.jsp'" value="Back" class="wishNew_buttom"/>
+    </div>
     </body>
 </html>

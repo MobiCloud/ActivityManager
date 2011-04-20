@@ -20,7 +20,7 @@
     </head>
     <body>
         <div id="menu_upper">
-            <img alt="logo"  src="images/menu_upper.jpg" border="0" style="height: 45%">
+            <img alt="logo"  src="images/menu_upper.jpg" border="0" style="width:70%">
         </div>
         <div id="menu_mid">
         </div>
@@ -31,6 +31,8 @@
         <div class="menu_items"><a href="InviteList.jsp">My Invitations</a></div>
             <hr/>
         <div class="menu_items"><a href="AllInvitations.jsp">All Invitations</a></div>
+            <hr/>
+        <div class="menu_items"><a href="Login.jsp">Log out</a></div>
             <hr/>
         </div>
     </body>

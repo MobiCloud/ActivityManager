@@ -4,25 +4,23 @@ body
     margin:0px;
 }
 
-#invitationList_upper
+#wish_upper
 {
+    padding-top: 3%;
     background-color: #bc1d1d;
     height: 70%;
     text-align: center;
-    padding-top: 3%;
 }
 
-#invitationList_mid
+#wish_mid
 {
     margin-top: -5px;
     height:99px;
     background-image: url("../images/upper_back.jpg");
     background-repeat: repeat-x;
-    text-align: center;
 }
 
-
-#invitationList_table
+#wish_form
 {
     font-size: 0.4in;
     color:#ffffff;
@@ -30,39 +28,36 @@ body
     text-align: center;
 }
 
-#invitationNew_upper
+#wishNew_upper
 {
     background-color: #bc1d1d;
     height: 70%;
     text-align: center;
 }
 
-#invitationNew_mid
+#wishNew_mid
 {
     margin-top: -5px;
     height:99px;
     background-image: url("../images/upper_back.jpg");
     background-repeat: repeat-x;
-    text-align: center;
 }
 
-
-#invitationNew_table
+#wishNew_form
 {
     text-align: center;
     font-size: 0.3in;
     color:#ffffff;
-    border-width: 0px;
 }
 
-.invitationNew_input
+.wishNew_input
 {
     width: 80%;
     height: 0.4in;
     font-size: 0.2in;
 }
 
-.invitationNew_buttom
+.wishNew_buttom
 {
     width: 80%;
     background-color: #bc1d1d;

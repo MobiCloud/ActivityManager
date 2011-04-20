@@ -24,6 +24,7 @@
     </head>
     <body>
     <div id="invitation_upper">
+        <img alt="logo" src="images/all_invite_logo.jpg" border="0" style="width:100%">
     </div>
     <div id="invitation_mid">
     </div>
@@ -40,31 +41,30 @@
 
         InvitationListMessage invitations = (InvitationListMessage)MessageSender.sendMessage(rwm);
         %>
-        <table border="1">
-            <th>Sport</th>
-            <th>Date</th>
-            <th>Start Time</th>
-            <th>End Time</th>
-            <th>Location</th>
-            <th>Max Players</th>
 
         <%
 	      // TODO: Need to handle exception like it was done for the invitations
               for(int i = 0; invitations != null && invitations.getAllItems() != null && i < invitations.getAllItems().length; i++){
                 InvitationItem tmp = invitations.getItem(i);
         %>
-        <tr>
-            <td><%= tmp.getSport() %></td>
-            <td><%= tmp.getDate() %></td>
-            <td><%= tmp.getStarttime() %></td>
-            <td><%= tmp.getEndtime() %></td>
-            <td><%= tmp.getLocation() %></td>
-            <td><%= tmp.getMaxgamer() %></td>
-        </tr>
+            <hr/>
+            <table align="center">
+            <tr>
+                <td   align="left" width="40%">Sport type: <%= tmp.getSport() %></td><td   align="left"  width="40%">Date: <%= tmp.getDate() %></td>
+            </tr>
+            <tr>
+                <td   align="left" width="40%">Start time: <%= tmp.getStarttime() %></td><td   align="left" width="40%">End time: <%= tmp.getEndtime() %></td>
+            </tr>
+            <tr>
+                <td   align="left" width="40%">Activity location: <%= tmp.getLocation() %></td><td   align="left" width="40%">Maximum players wanted: <%= tmp.getMaxgamer() %></td>
+            </tr>
+            </table>
         <%
             }//close the for
         %>
-        </table>
-		</div>
+        <hr/>
+    <input type="button" onclick="window.location='Menu.jsp'" value="Back" id="invitation_back"/>
+    <br/>
+    </div>
     </body>
 </html>
