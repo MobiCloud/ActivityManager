@@ -1,0 +1,81 @@
+body
+{
+    background-color: #ecf1f4;
+}
+
+#login_upper
+{
+    background-repeat: no-repeat;
+    margin: auto;
+    text-align: center;
+}
+
+.notes
+{
+    font-weight: bold;
+    color: #000000;
+}
+
+.login_button
+{
+    width: 80%;
+    background-color: #ffffff;
+    height: 30px;
+    line-height: 30px;
+    border-bottom-color: #000000;
+    border-bottom-style: none;
+    border-width: 1px;
+}
+
+.login_input
+{
+    width: 80%;
+}
+
+#login_form
+{
+    text-align: center;
+}
+
+#login_buttom
+{
+    text-align: center;
+    font-weight: bold;
+}
+
+.register_input
+{
+    width: 80%;
+}
+
+#register_OK
+{
+    width: 40%;
+    background-color: #ff0000;
+    color: #ffffff;
+    text-align: center;
+    font-weight: bold;
+    height: 30px;
+    line-height: 30px;
+    border-bottom-color: #000000;
+    border-bottom-style: none;
+    border-width: 1px;
+}
+#register_back
+{
+    width: 40%;
+    background-color: #000000;
+    color: #ffffff;
+    text-align: center;
+    font-weight: bold;
+    height: 30px;
+    line-height: 30px;
+    border-bottom-color: #000000;
+    border-bottom-style: none;
+    border-width: 1px;
+}
+
+#register_form
+{
+    margin: auto;
+}
