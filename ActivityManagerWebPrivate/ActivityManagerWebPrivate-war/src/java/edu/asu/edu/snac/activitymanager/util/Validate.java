@@ -13,6 +13,7 @@ public class Validate
     /**
      * Will receive a String with a user name and will make sure it is of
      * appropriate length which we will limit to 4 to 12 standard ASCII characters.
+     * TODO: Allow other characters such as numbers and/or periods.
      * @param username
      * @return true if username is valid, false otherwise
      */
@@ -50,6 +51,7 @@ public class Validate
     /**
      * Only checks if password is of the right length, it can include any other
      * type-able character.
+     * TODO: Can be force only standard ASCII characters
      * @param password
      * @return true if password is of correct length
      */
@@ -63,12 +65,23 @@ public class Validate
         return isValid;
     }
 
-    
+
+    /**
+     * Checks if the email is valid.
+     * @param email
+     * @return true if the email matches the given specification otherwise false
+     */
+    public static boolean Email( String email )
+    {
+        // TODO: Really badly coded, only checks if there is an @ and . 
+        return (email.split("[@\\.]").length == 3) ? true: false;
+    }
+
     // TODO: Remove using for testing purposes
     public static void main( String[] args )
     {
-        String username = "fred";
-        System.out.println( Validate.Password(username) );
+        String username = "fred@stuff..com";
+        System.out.println( Validate.Email(username) );
     }
 }
 
