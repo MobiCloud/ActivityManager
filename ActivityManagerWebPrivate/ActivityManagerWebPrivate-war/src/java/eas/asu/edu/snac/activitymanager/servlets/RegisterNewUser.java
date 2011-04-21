@@ -9,6 +9,7 @@ package eas.asu.edu.snac.activitymanager.servlets;
 import eas.asu.edu.snac.activitymanager.networking.MessageSender;
 import edu.asu.eas.snac.activitymanager.messages.RegisterMessage;
 import edu.asu.edu.snac.activitymanager.util.Constants;
+import edu.asu.edu.snac.activitymanager.util.Validate;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -36,22 +37,38 @@ public class RegisterNewUser extends HttpServlet {
         PrintWriter out = response.getWriter();
         try
         {
-            RegisterMessage reg = new RegisterMessage();
-
+            // Get all the information from the POST/GET header
             String username = request.getParameter("username");
-            reg.setEmail(request.getParameter("email"));
-            reg.setPassword(request.getParameter("password"));
-            out.println("Phone Number: " + request.getParameter("phoneNumber"));
-            reg.setPhone(request.getParameter("phoneNumber"));
-            reg.setUsername(username);
+            String password = request.getParameter("password");
+            String email    = request.getParameter("email");
+            String phone    = request.getParameter("phoneNumber");
 
+            // Check if data is valid
+            if( Validate.Username(username) && Validate.Password(password) && Validate.Email(email) & Validate.Phone(phone) )
+            {
+                // Create registration message and send it
+                RegisterMessage reg = new RegisterMessage();
+                reg.setUsername(username);
+                reg.setPassword(password);
+                reg.setEmail(email);
+                reg.setPhone(phone);
 
-            MessageSender.sendMessage(reg);
+                //TODO: I don't know what this is for, ask fredzilla
+                out.println("Phone Number: " + request.getParameter("phoneNumber"));
 
-            request.getSession(true).setAttribute(Constants.LOGGED_IN_TOKEN, username);
+                //TOO: Un-comment for production code
+                //MessageSender.sendMessage(reg);
+                request.getSession(true).setAttribute(Constants.LOGGED_IN_TOKEN, username);
 
-            response.sendRedirect("Mobile/Menu.jsp");
-
+                // Redirect to Main Menu
+                response.sendRedirect("Mobile/Menu.jsp");
+            }
+            else
+            {
+                // Something in the data was not valid
+                out.println("Your Registration Information is bad.");
+                response.sendRedirect("InvalidData.jsp");
+            }
         }
         finally
         {

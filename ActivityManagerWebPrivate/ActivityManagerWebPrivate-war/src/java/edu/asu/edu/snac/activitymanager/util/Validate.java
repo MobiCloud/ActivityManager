@@ -92,8 +92,8 @@ public class Validate
     // TODO: Remove using for testing purposes
     public static void main( String[] args )
     {
-        String username = "fred@stuff..com";
-        System.out.println( Validate.Email(username) );
+        String username = "999.888.1111";
+        System.out.println( Validate.Phone(username) );
     }
 }
 
