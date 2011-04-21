@@ -1,6 +1,8 @@
-*swp
-*swo
-*war
-*class
+*.swp
+*.swo
+*.war
+*.class
 *.dpf
-/ActivityManagerWebPrivate/dist/gfdeploy/
+*.netbeans_automatic_build
+*.netbeans_update_resources
+ActivityManagerWebPrivate/dist/gfdeploy/
