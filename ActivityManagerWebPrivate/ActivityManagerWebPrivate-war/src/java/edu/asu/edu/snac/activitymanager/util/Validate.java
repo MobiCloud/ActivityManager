@@ -77,6 +77,18 @@ public class Validate
         return (email.split("[@\\.]").length == 3) ? true: false;
     }
 
+    /**
+     * Checks if the phone number is valid, it should be in the following format
+     * ###.###.####
+     * @param phone
+     * @return true if the number is valid, otherwise false
+     */
+    public static boolean Phone( String phone )
+    {
+        //TODO: Not very robust only checks if there are three segments of XXX.XXX.XXXX and it's 12 characters long
+        return (phone.split("\\.").length == 3 && phone.length() == 12 )? true : false ;
+    }
+    
     // TODO: Remove using for testing purposes
     public static void main( String[] args )
     {
