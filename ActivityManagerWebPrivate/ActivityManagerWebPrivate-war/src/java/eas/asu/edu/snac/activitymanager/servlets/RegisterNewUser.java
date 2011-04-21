@@ -67,6 +67,10 @@ public class RegisterNewUser extends HttpServlet {
             {
                 // Something in the data was not valid
                 out.println("Your Registration Information is bad.");
+                request.getSession().setAttribute("username", username);
+                request.getSession().setAttribute("password", password);
+                request.getSession().setAttribute("email", email);
+                request.getSession().setAttribute("phone", phone);
                 response.sendRedirect("InvalidData.jsp");
             }
         }
