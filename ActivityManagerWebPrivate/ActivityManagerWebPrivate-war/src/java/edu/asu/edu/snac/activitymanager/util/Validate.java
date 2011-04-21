@@ -47,19 +47,28 @@ public class Validate
         return isValid;
     }
 
+    /**
+     * Only checks if password is of the right length, it can include any other
+     * type-able character.
+     * @param password
+     * @return true if password is of correct length
+     */
     public static boolean Password( String password )
     {
         boolean isValid = false;
 
-        //if( password.length() < )
+        if( Constants.PASSWORD_MIN_LENGTH <= password.length() && password.length() < Constants.PASSWORD_MAX_LENGTH )
+            isValid = true;
+        
         return isValid;
     }
 
+    
     // TODO: Remove using for testing purposes
     public static void main( String[] args )
     {
         String username = "fred";
-        System.out.println( Validate.Username(username) );
+        System.out.println( Validate.Password(username) );
     }
 }
 
