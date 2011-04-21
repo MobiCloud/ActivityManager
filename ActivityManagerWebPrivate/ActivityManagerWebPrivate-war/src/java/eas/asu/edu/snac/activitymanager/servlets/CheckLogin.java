@@ -29,36 +29,51 @@ public class CheckLogin extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+        throws ServletException, IOException
+    {
+        PrintWriter out = response.getWriter();
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
-        PrintWriter out = response.getWriter();
-        out.println("Username: " + username);
+        // Do not allow anyone to enter a blank username/password
+        if( !username.isEmpty() || !password.isEmpty() )
+        {
+            out.println("Username: " + username);
 
-        LoginMessage lm = new LoginMessage();
-        lm.setUsername(username);
-        lm.setPassword(password);
-        FeedbackMessage messageResponse = (FeedbackMessage) MessageSender.sendMessage(lm);
-        out.println("Send the message.");
+            LoginMessage lm = new LoginMessage();
+            lm.setUsername(username);
+            lm.setPassword(password);
 
-        if(messageResponse != null){
+            FeedbackMessage messageResponse = (FeedbackMessage) MessageSender.sendMessage(lm);
+            out.println("Send the message.");
 
-            int result = messageResponse.getReturnNo();
+            if (messageResponse != null)
+            {
 
-            System.out.print("~~~~~~~~~~~~~~~~~~~~~ THE RESULT IS: " + result);
-            if (result == 0) {
-                HttpSession session = request.getSession(true);
-                session.setAttribute("loggedInUser", username);
-                response.sendRedirect("Mobile/Menu.jsp");
-            } else {
-                response.sendRedirect("Mobile/Login.jsp");
+                int result = messageResponse.getReturnNo();
+
+                System.out.print("~~~~~~~~~~~~~~~~~~~~~ THE RESULT IS: " + result);
+                if (result == 0)
+                {
+                    HttpSession session = request.getSession(true);
+                    session.setAttribute("loggedInUser", username);
+                    response.sendRedirect("Mobile/Menu.jsp");
+                }
+                else
+                {
+                    response.sendRedirect("Mobile/Login.jsp");
+                }
+            }
+            else
+            {
+                out.println("Failed to get a response.");
             }
         }
-        else{
-            out.println("Failed to get a reesponse.");
+        else
+        {
+            out.println("Missing username/password.");
+            response.sendRedirect("Mobile/Login.jsp");
         }
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
