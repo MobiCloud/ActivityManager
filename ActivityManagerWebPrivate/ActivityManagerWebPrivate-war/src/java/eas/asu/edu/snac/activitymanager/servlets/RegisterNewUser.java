@@ -55,9 +55,8 @@ public class RegisterNewUser extends HttpServlet {
 
                 //TODO: I don't know what this is for, ask fredzilla
                 out.println("Phone Number: " + request.getParameter("phoneNumber"));
-
-                //TOO: Un-comment for production code
-                //MessageSender.sendMessage(reg);
+                
+                MessageSender.sendMessage(reg);
                 request.getSession(true).setAttribute(Constants.LOGGED_IN_TOKEN, username);
 
                 // Redirect to Main Menu

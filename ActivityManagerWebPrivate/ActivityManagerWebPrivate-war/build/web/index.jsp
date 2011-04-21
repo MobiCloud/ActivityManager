@@ -26,10 +26,7 @@
             }
             else
             {
-                //response.sendRedirect("Mobile/Login.jsp");
-                
-                //TODO: Redirecting to Register Page for testing
-                response.sendRedirect("Mobile/Register.jsp");
+                response.sendRedirect("Mobile/Login.jsp");
             }
         %>
     </body>
