@@ -30,10 +30,12 @@ public class RegisterNewUser extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+        throws ServletException, IOException
+    {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        try {
+        try
+        {
             RegisterMessage reg = new RegisterMessage();
 
             String username = request.getParameter("username");
@@ -42,7 +44,7 @@ public class RegisterNewUser extends HttpServlet {
             out.println("Phone Number: " + request.getParameter("phoneNumber"));
             reg.setPhone(request.getParameter("phoneNumber"));
             reg.setUsername(username);
-            
+
 
             MessageSender.sendMessage(reg);
 
@@ -50,7 +52,9 @@ public class RegisterNewUser extends HttpServlet {
 
             response.sendRedirect("Mobile/Menu.jsp");
 
-        } finally { 
+        }
+        finally
+        {
             out.close();
         }
     } 
