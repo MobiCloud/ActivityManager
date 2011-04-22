@@ -37,7 +37,7 @@
             Date: <br/>
             <input type="text" name="date" class="wishNew_input"/><br/><br/>
             <input type="submit" value="Add New Wish" class="wishNew_buttom"/><br/><br/>
-            <input type="button" onclick="window.location='WishList.jsp'" value="Cancel" class="wishNew_buttom"/><br/><br/>
+            <input type="button" onclick="window.location='javascript:history.go(-1)'" value="Cancel" class="wishNew_buttom"/><br/><br/>
         </form>
     </div>
     </body>

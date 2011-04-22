@@ -63,7 +63,7 @@
             }//close the for
         %>
         <hr/>
-    <input type="button" onclick="window.location='Menu.jsp'" value="Back" id="invitation_back"/>
+    <input type="button" onclick="window.location='javascript:history.go(-1)'" value="Back" id="invitation_back"/>
     <br/>
     </div>
     </body>
