@@ -46,29 +46,29 @@ public class RegisterNewUser extends HttpServlet {
             String password2    = request.getParameter("password2");
             String email        = request.getParameter("email");
             String phone        = request.getParameter("phoneNumber");
-            String messageResponse = "";
+            StringBuilder messageResponse = new StringBuilder();
             boolean isValid = false;
 
             // Check if data is valid
             if (!Validate.Username(username))
             {
-                messageResponse = "Invalid Username";
+                messageResponse.append("Invalid Username\n");
             }
             else if (!Validate.Password(password))
             {
-                messageResponse = "Invalid Password";
+                messageResponse.append( "Invalid Password\n" );
             }
             else if( !password.equals(password2) )
             {
-                messageResponse = "Passwords do not match!";
+                messageResponse.append("Passwords do not match!\n");
             }
             else if( !Validate.Email(email) )
             {
-                messageResponse = "Invalid email address.";
+                messageResponse.append("Invalid email address.\n");
             }
             else if (!Validate.Phone(phone))
             {
-                messageResponse = "Invalid phone number";
+                messageResponse.append("Invalid phone number\n");
             }
             else
             {
