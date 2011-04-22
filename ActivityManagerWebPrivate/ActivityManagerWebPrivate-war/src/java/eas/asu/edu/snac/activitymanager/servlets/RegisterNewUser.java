@@ -44,7 +44,7 @@ public class RegisterNewUser extends HttpServlet {
             String phone    = request.getParameter("phoneNumber");
 
             // Check if data is valid
-            if( Validate.Username(username) && Validate.Password(password) && Validate.Email(email) & Validate.Phone(phone) )
+            if( Validate.Username(username) && Validate.Password(password) && Validate.Email(email) && Validate.Phone(phone) )
             {
                 // Create registration message and send it
                 RegisterMessage reg = new RegisterMessage();
@@ -57,7 +57,7 @@ public class RegisterNewUser extends HttpServlet {
                 out.println("Phone Number: " + request.getParameter("phoneNumber"));
 
                 //TOO: Un-comment for production code
-                //MessageSender.sendMessage(reg);
+                MessageSender.sendMessage(reg);
                 request.getSession(true).setAttribute(Constants.LOGGED_IN_TOKEN, username);
 
                 // Redirect to Main Menu
@@ -71,7 +71,7 @@ public class RegisterNewUser extends HttpServlet {
                 request.getSession().setAttribute("password", password);
                 request.getSession().setAttribute("email", email);
                 request.getSession().setAttribute("phone", phone);
-                response.sendRedirect("InvalidData.jsp");
+                //response.sendRedirect("InvalidData.jsp");
             }
         }
         finally
