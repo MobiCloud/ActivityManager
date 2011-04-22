@@ -15,6 +15,12 @@
     </head>
     <body>
         <h1>You no Enter Proper Info!!!</h1>
-        <img src="http://cache.ohinternet.com/images/2/2d/Trollface_HD.png"/>
+        <img src="http://www.gamesprays.com/images/icons/trollface-3078_preview.jpg"/>
+        <p>
+            Username:<%= request.getSession().getAttribute("username")%><br>
+            Password:<%= request.getSession().getAttribute("password")%><br>
+            Email   :<%= request.getSession().getAttribute("email")%><br>
+            Phone   :<%= request.getSession().getAttribute("phone")%><br>
+        </p>
     </body>
 </html>
