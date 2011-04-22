@@ -13,13 +13,19 @@ import java.util.regex.Pattern;
  */
 public class Validate
 {
+    /* Private Constants */
+    private static final String USERNAME_PATTERN = "[a-zA-z]*";
     private static final String EMAIL_PATTERN = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@"
                                                 + "[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
-    private static final String PHONE_PATERN = "^[01]?[- .]?\\(?[2-9]\\d{2}\\)?[- .]?\\d{3}[- .]?\\d{4}$";
+    private static final String PHONE_PATTERN = "^[01]?[- .]?\\(?[2-9]\\d{2}\\)?[- .]?\\d{3}[- .]?\\d{4}$";
+    
+    /* Private Static Instance Variables */
+    private static Pattern sCurrentPattern;
+    private static Matcher sCurrentMatcher;
 
     /**
-     * Will receive a String with a user name and will make sure it is of
-     * appropriate length which we will limit to 4 to 12 standard ASCII characters.
+     * Checks if the given username is of the right length and using the right characters.
+     * appropriate length.
      * TODO: Allow other characters such as numbers and/or periods.
      * @param username
      * @return true if username is valid, false otherwise
@@ -31,25 +37,9 @@ public class Validate
         // First determine if length is valid
         if( Constants.USERNAME_MIN_LENGTH <= username.length() && username.length() < Constants.USERNAME_MAX_LENGTH )
         {
-            isValid = true;
-            // Then we must check that characters are within range.
-            char[] usernameArray = username.toCharArray();
-            for( char currentChar : usernameArray )
-            {
-                // Must be a letter from the alphabet if not break the loop and
-                // return false. Very ugly, more elegant way?
-                if(
-                    !(
-                        (currentChar >= Constants.ASCII_UPPERCASE_BOUNDS[0] && currentChar <= Constants.ASCII_UPPERCASE_BOUNDS[1] ) ||
-                        (currentChar >= Constants.ASCII_LOWERCASE_BOUNDS[0] && currentChar <= Constants.ASCII_LOWERCASE_BOUNDS[1] )
-                     )
-                  )
-                {
-                    isValid = false;
-                    break;
-                }
-                    
-            }
+            sCurrentPattern = Pattern.compile(USERNAME_PATTERN);
+            sCurrentMatcher = sCurrentPattern.matcher(username);
+            isValid = sCurrentMatcher.matches();
         }
 
         return isValid;
@@ -71,8 +61,7 @@ public class Validate
         
         return isValid;
     }
-
-
+    
     /**
      * Checks if the email is valid.
      * @param email
@@ -80,24 +69,28 @@ public class Validate
      */
     public static boolean Email( String email )
     {
-        Pattern pattern = Pattern.compile(EMAIL_PATTERN);
-        Matcher matcher = pattern.matcher(email);
-        return matcher.matches();
+        sCurrentPattern = Pattern.compile(EMAIL_PATTERN);
+        sCurrentMatcher = sCurrentPattern.matcher(email);
+        return sCurrentMatcher.matches();
     }
 
     /**
-     * Checks if the phone number is valid, it should be in the following format
-     * ###.###.####
+     * Checks if the phone number is valid
      * @param phone
      * @return true if the number is valid, otherwise false
      */
     public static boolean Phone( String phone )
     {
-        Pattern pattern = Pattern.compile(PHONE_PATERN);
-        Matcher matcher = pattern.matcher(phone);
-        return matcher.matches();
+        sCurrentPattern = Pattern.compile(PHONE_PATTERN);
+        sCurrentMatcher = sCurrentPattern.matcher(phone);
+        return sCurrentMatcher.matches();
     }
 
+    /**
+     * Removes all non-Digit characters from the given phone number.
+     * @param phone
+     * @return 
+     */
     public static String StripPhoneNum( String phone )
     {
         StringBuilder strippedPhone = new StringBuilder();
@@ -118,12 +111,12 @@ public class Validate
     {
         return ( 0 < sport.length() && sport.length() <= Constants.SPORT_MAX_LENGTH )? true : false;
     }
+    
+    
     // TODO: Remove using for testing purposes
     public static void main( String[] args )
     {
-        String username = "999.888.1111";
-        System.out.println( Validate.Phone(username) );
+        String username = "aoeuaoue";
+        System.out.println( Validate.Username(username) );
     }
 }
-
-
