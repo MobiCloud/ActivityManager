@@ -47,7 +47,7 @@ public class RegisterNewUser extends HttpServlet {
             String email        = request.getParameter("email");
             String phone        = request.getParameter("phoneNumber");
             StringBuilder messageResponse = new StringBuilder();
-            boolean isValid = false;
+            boolean errorFlag = true;
 
             // Check if data is valid
             if (!Validate.Username(username))
@@ -72,11 +72,11 @@ public class RegisterNewUser extends HttpServlet {
             }
             else
             {
-                isValid = true;
+                errorFlag = false;
             }
             
             
-            if( isValid )
+            if( !errorFlag )
             {
                 // Create registration message and send it
                 RegisterMessage reg = new RegisterMessage();
@@ -98,6 +98,7 @@ public class RegisterNewUser extends HttpServlet {
                 else
                 {
                     //TODO: Send some session variables to acknowledge user
+                    messageResponse.append(fbm.getMsgType());
                     response.sendRedirect("Mobile/Register.jsp");
                 }
 

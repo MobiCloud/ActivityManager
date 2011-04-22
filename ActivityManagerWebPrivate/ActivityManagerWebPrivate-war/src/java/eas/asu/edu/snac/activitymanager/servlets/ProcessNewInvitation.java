@@ -55,15 +55,15 @@ public class ProcessNewInvitation extends HttpServlet {
             String location = request.getParameter("location");
             String maxGamer = request.getParameter("maxgamer");
             
-            boolean errorFlag = false;
+            boolean errorFlag = true;
             StringBuilder errorMessage = new StringBuilder();
             
             // Validate all parameters
             if( !Validate.Sport(sport) )
             {
-                errorFlag = true;
                 errorMessage.append("Invalid Activity Length");
             }
+            // TOOD: Validate date
             //else if( !Validate.)
             
             //set the invitation parameters
