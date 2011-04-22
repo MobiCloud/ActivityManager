@@ -4,12 +4,18 @@
  */
 package edu.asu.edu.snac.activitymanager.util;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  *
  * @author Jose Trigueros
  */
 public class Validate
 {
+    private static final String EMAIL_PATTERN = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@"
+                                                + "[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+
     /**
      * Will receive a String with a user name and will make sure it is of
      * appropriate length which we will limit to 4 to 12 standard ASCII characters.
@@ -73,8 +79,10 @@ public class Validate
      */
     public static boolean Email( String email )
     {
-        // TODO: Really badly coded, only checks if there is an @ and . 
-        return (email.split("[@\\.]").length == 3) ? true: false;
+        Pattern pattern = Pattern.compile(EMAIL_PATTERN);
+        Matcher matcher = pattern.matcher(email);
+
+        return matcher.matches();
     }
 
     /**
