@@ -44,7 +44,7 @@ public class RegisterNewUser extends HttpServlet {
             String phone    = request.getParameter("phoneNumber");
 
             // Check if data is valid
-            if( Validate.Username(username) && Validate.Password(password) && Validate.Email(email) & Validate.Phone(phone) )
+            if( Validate.Username(username) && Validate.Password(password) && Validate.Email(email) && Validate.Phone(phone) )
             {
                 // Create registration message and send it
                 RegisterMessage reg = new RegisterMessage();
