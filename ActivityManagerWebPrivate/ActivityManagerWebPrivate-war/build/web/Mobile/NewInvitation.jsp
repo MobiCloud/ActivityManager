@@ -26,7 +26,7 @@
     </div>
     <div id="invitationNew_table">
         <form action="../ProcessNewInvitation" method="post">
-            Sport:<br/>
+            Activity:<br/>
             <input type="text" name="sport" class="invitationNew_input"/><br/>
             Start Time: <br/>
             <input type="text" name="starttime" class="invitationNew_input"/><br/>

@@ -31,7 +31,7 @@
     </div>
     <div id="wish_form">
         <hr/>
-        <a href="NewWish.jsp">Add New Wish</a>
+        <input type="button" onclick="window.location='NewWish.jsp'" value="Add New Wish" class="wishNew_buttom"/>
         <%
         //get the wishes
         ReqWishMessage rwm = new ReqWishMessage();
@@ -47,7 +47,7 @@
         <hr/>
         <table align="center">
             <tr>
-                <td   align="left" width="40%">Sport type: <%= tmp.getSport() %></td><td   align="left"  width="40%">Date: <%= tmp.getDate() %></td>
+                <td   align="left" width="40%">Activity type: <%= tmp.getSport() %></td><td   align="left"  width="40%">Date: <%= tmp.getDate() %></td>
             </tr>
             <tr>
                 <td   align="left" width="40%">Start time: <%= tmp.getStarttime() %></td><td   align="left" width="40%">End time: <%= tmp.getEndtime() %></td>

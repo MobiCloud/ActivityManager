@@ -7,11 +7,8 @@ package eas.asu.edu.snac.activitymanager.servlets;
 
 
 import eas.asu.edu.snac.activitymanager.networking.MessageSender;
-import edu.asu.eas.snac.activitymanager.messages.FeedbackMessage;
-import edu.asu.eas.snac.activitymanager.messages.FeedbackType;
 import edu.asu.eas.snac.activitymanager.messages.RegisterMessage;
 import edu.asu.edu.snac.activitymanager.util.Constants;
-import edu.asu.edu.snac.activitymanager.util.SHA1;
 import edu.asu.edu.snac.activitymanager.util.Validate;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -52,26 +49,23 @@ public class RegisterNewUser extends HttpServlet {
                 // Create registration message and send it
                 RegisterMessage reg = new RegisterMessage();
                 reg.setUsername(username);
-                reg.setPassword(SHA1.sha1(password));
+                reg.setPassword(password);
                 reg.setEmail(email);
-                reg.setPhone(Validate.StripPhoneNum(phone));
+                reg.setPhone(phone);
 
                 //TODO: I don't know what this is for, ask fredzilla
                 out.println("Phone Number: " + request.getParameter("phoneNumber"));
-                FeedbackMessage fbm = (FeedbackMessage)MessageSender.sendMessage(reg);
-                // TODO: check if fbm returns
-                if( fbm.getMsgType() == FeedbackType.SUCCESS )
-                {
-                    request.getSession(true).setAttribute(Constants.LOGGED_IN_TOKEN, username);
-                    // Redirect to Main Menu
-                    response.sendRedirect("Mobile/Menu.jsp");
-                }
-                else
-                {
-                    //TODO: Send some session variables to acknowledge user
-                    response.sendRedirect("Mobile/Register.jsp");
-                }
+<<<<<<< HEAD
+                
+=======
 
+                //TOO: Un-comment for production code
+>>>>>>> DataValidation
+                MessageSender.sendMessage(reg);
+                request.getSession(true).setAttribute(Constants.LOGGED_IN_TOKEN, username);
+
+                // Redirect to Main Menu
+                response.sendRedirect("Mobile/Menu.jsp");
             }
             else
             {
@@ -81,7 +75,7 @@ public class RegisterNewUser extends HttpServlet {
                 request.getSession().setAttribute("password", password);
                 request.getSession().setAttribute("email", email);
                 request.getSession().setAttribute("phone", phone);
-                response.sendRedirect("InvalidData.jsp");
+                //response.sendRedirect("InvalidData.jsp");
             }
         }
         finally

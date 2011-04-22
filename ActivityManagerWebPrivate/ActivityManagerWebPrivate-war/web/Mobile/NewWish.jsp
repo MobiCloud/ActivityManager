@@ -26,7 +26,7 @@
     </div>
     <div id="wishNew_form">
         <form action="../ProcessNewWish" method="post">
-            Sport: <br/>
+            Activity: <br/>
             <input type="text" name="sport" class="wishNew_input"/><br/>
             Start Time: <br/>
             <input type="text" name="starttime" class="wishNew_input"/><br/>
