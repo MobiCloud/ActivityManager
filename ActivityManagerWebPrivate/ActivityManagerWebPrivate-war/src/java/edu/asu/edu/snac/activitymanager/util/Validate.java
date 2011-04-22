@@ -111,6 +111,26 @@ public class Validate
     }
     
     /**
+     * Checks if the given time has valid format.
+     * @param time
+     * @return 
+     */
+    public static boolean Time( String time )
+    {
+        return checkMatchingRegex(TIME_PATTERN, time);
+    }
+    
+    /**
+     * Checks if the given date has valid format.
+     * @param date
+     * @return 
+     */
+    public static boolean Date( String date )
+    {
+        return checkMatchingRegex(DATE_PATTERN, date);
+    }
+    
+    /**
      * Given a regex matching pattern and a target string, it'll determine if the string matches
      * the pattern.
      * @param regexPattern
