@@ -47,7 +47,7 @@
         <hr/>
         <table align="center">
             <tr>
-                <td   align="left" width="40%">Sport type: <%= tmp.getSport() %></td><td   align="left"  width="40%">Date: <%= tmp.getDate() %></td>
+                <td   align="left" width="40%">Activity type: <%= tmp.getSport() %></td><td   align="left"  width="40%">Date: <%= tmp.getDate() %></td>
             </tr>
             <tr>
                 <td   align="left" width="40%">Start time: <%= tmp.getStarttime() %></td><td   align="left" width="40%">End time: <%= tmp.getEndtime() %></td>
