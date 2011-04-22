@@ -17,12 +17,16 @@ public class Validate
     private static final String USERNAME_PATTERN = "[a-zA-z]*";
     private static final String EMAIL_PATTERN = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@"
                                                 + "[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
-    private static final String PHONE_PATTERN = "^[01]?[- .]?\\(?[2-9]\\d{2}\\)?[- .]?\\d{3}[- .]?\\d{4}$";
+    private static final String PHONE_PATTERN = "^[01]?[- .]?\\(?[2-9]\\d{2}\\)?"
+                                                + "[- .]?\\d{3}[- .]?\\d{4}$";
     
-    /* Private Static Instance Variables */
-    private static Pattern sCurrentPattern;
-    private static Matcher sCurrentMatcher;
-
+    private static final String DATE_PATTERN = "^(((0?[1-9]|1[012])/(0?[1-9]|1\\d|"
+                                                + "2[0-8])|(0?[13456789]|1[012])/(29|30)|"
+                                                + "(0?[13578]|1[02])/31)/(19|[2-9]\\d)\\d{2}|"
+                                                + "0?2/29/((19|[2-9]\\d)(0[48]|[2468][048]|"
+                                                + "[13579][26])|(([2468][048]|[3579][26])00)))$";
+    private static final String TIME_PATTERN = "^([0-1][0-9]|[2][0-3]):([0-5][0-9])$";
+    
     /**
      * Checks if the given username is of the right length and using the right characters.
      * appropriate length.
@@ -37,9 +41,7 @@ public class Validate
         // First determine if length is valid
         if( Constants.USERNAME_MIN_LENGTH <= username.length() && username.length() < Constants.USERNAME_MAX_LENGTH )
         {
-            sCurrentPattern = Pattern.compile(USERNAME_PATTERN);
-            sCurrentMatcher = sCurrentPattern.matcher(username);
-            isValid = sCurrentMatcher.matches();
+            isValid = checkMatchingRegex(USERNAME_PATTERN, username);
         }
 
         return isValid;
@@ -69,9 +71,7 @@ public class Validate
      */
     public static boolean Email( String email )
     {
-        sCurrentPattern = Pattern.compile(EMAIL_PATTERN);
-        sCurrentMatcher = sCurrentPattern.matcher(email);
-        return sCurrentMatcher.matches();
+        return checkMatchingRegex(EMAIL_PATTERN, email);
     }
 
     /**
@@ -81,9 +81,7 @@ public class Validate
      */
     public static boolean Phone( String phone )
     {
-        sCurrentPattern = Pattern.compile(PHONE_PATTERN);
-        sCurrentMatcher = sCurrentPattern.matcher(phone);
-        return sCurrentMatcher.matches();
+        return checkMatchingRegex(PHONE_PATTERN, phone);
     }
 
     /**
@@ -112,6 +110,19 @@ public class Validate
         return ( 0 < sport.length() && sport.length() <= Constants.SPORT_MAX_LENGTH )? true : false;
     }
     
+    /**
+     * Given a regex matching pattern and a target string, it'll determine if the string matches
+     * the pattern.
+     * @param regexPattern
+     * @param targetString
+     * @return true if the string matches the regex pattern, otherwise false
+     */
+    private static boolean checkMatchingRegex( String regexPattern, String targetString )
+    {
+        Pattern currentPattern = Pattern.compile(regexPattern);
+        Matcher currentMatcher = currentPattern.matcher(targetString);
+        return currentMatcher.matches();
+    }
     
     // TODO: Remove using for testing purposes
     public static void main( String[] args )
