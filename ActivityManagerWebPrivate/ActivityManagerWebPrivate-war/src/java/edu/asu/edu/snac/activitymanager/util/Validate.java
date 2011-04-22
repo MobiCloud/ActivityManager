@@ -88,7 +88,16 @@ public class Validate
         //TODO: Not very robust only checks if there are three segments of XXX.XXX.XXXX and it's 12 characters long
         return (phone.split("\\.").length == 3 && phone.length() == 12 )? true : false ;
     }
-    
+
+    /**
+     * Simply checks if the sport name is within valid character range.
+     * @param sport
+     * @return
+     */
+    public static boolean Sport( String sport )
+    {
+        return ( 0 < sport.length() && sport.length() <= Constants.SPORT_MAX_LENGTH )? true : false;
+    }
     // TODO: Remove using for testing purposes
     public static void main( String[] args )
     {
