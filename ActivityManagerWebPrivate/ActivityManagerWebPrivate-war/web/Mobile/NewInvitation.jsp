@@ -39,7 +39,7 @@
             Max Players: <br/>
             <input type="text" name="maxgamer" class="invitationNew_input"/><br/><br/>
             <input type="submit" value="Add New Invitation" class="invitationNew_buttom"/><br/><br/>
-            <input type="button" onclick="window.location='InviteList.jsp'" value="Cancel" class="invitationNew_buttom"/><br/><br/>
+            <input type="button" onclick="window.location='javascript:history.go(-1)'" value="Cancel" class="invitationNew_buttom"/><br/><br/>
         </form>
     </div>>
     </body>
