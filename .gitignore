@@ -5,7 +5,3 @@
 *.dpf
 *.netbeans_automatic_build
 *.netbeans_update_resources
-ActivityManagerWebPrivate/dist/gfdeploy/
-ActivityManagerWebPrivate/ActivityManagerWebPrivate-war/build/
-ActivityManagerWebPrivate/build/
-ActivityManagerWebPrivate/dist/
