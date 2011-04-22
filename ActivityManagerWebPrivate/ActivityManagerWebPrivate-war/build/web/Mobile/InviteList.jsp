@@ -31,7 +31,7 @@
     </div>
     <div id="invitationList_table">
         <hr/>
-        <a href="NewInvitation.jsp">New Invitation</a>
+        <input type="button" onclick="window.location='NewInvitation.jsp'" value="Add New Invitation" class="invitationNew_buttom"/>
         <%
         //get the wishes
         ReqInvitationMessagePublicVM rwm = new ReqInvitationMessagePublicVM();
@@ -51,13 +51,13 @@
         <hr/>
         <table align="center">
             <tr>
-                <td   align="left" width="40%">Sport type: <%= tmp.getSport() %></td><td   align="left"  width="40%">Date: <%= tmp.getDate() %></td>
+                <td   align="left" width="40%">Activity type: <%= tmp.getSport() %></td><td   align="left"  width="40%">Date: <%= tmp.getDate() %></td>
             </tr>
             <tr>
                 <td   align="left" width="40%">Start time: <%= tmp.getStarttime() %></td><td   align="left" width="40%">End time: <%= tmp.getEndtime() %></td>
             </tr>
             <tr>
-                <td   align="left" width="40%">Activity location: <%= tmp.getLocation() %></td><td   align="left" width="40%">Maximum players wanted: <%= tmp.getMaxgamer() %></td>
+                <td   align="left" width="40%">Activity location: <%= tmp.getLocation() %></td><td   align="left" width="40%">Maximum persons wanted: <%= tmp.getMaxgamer() %></td>
             </tr>
         </table>
         <%

@@ -19,14 +19,15 @@
         If you are a mobile phone user,click <a href="Login.jsp">here</a>.
         For PC users, click <a href="Login.jsp">here</a>.
         <%
+            //response.sendRedirect("Login.jsp");
             String header=request.getHeader("user-agent");
             if(header.indexOf("Android") != -1 || header.indexOf("iPhone") != -1)
             {
-                response.sendRedirect("Mobile/Login.jsp");
+                response.sendRedirect("Login.jsp");
             }
             else
             {
-                response.sendRedirect("Mobile/Login.jsp");
+                response.sendRedirect("PC/Login.jsp");
             }
         %>
     </body>

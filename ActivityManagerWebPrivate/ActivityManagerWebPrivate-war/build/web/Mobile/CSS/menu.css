@@ -1,0 +1,40 @@
+body
+{
+    background-color: #000000;
+    margin:0px;
+}
+
+#menu_upper
+{
+    background-color: #bc1d1d;
+    height: 50%;
+    text-align: center;
+    padding-top:5px;
+}
+
+#menu_mid
+{
+    margin-top: -5px;
+    height:99px;
+    background-image: url("../images/upper_back.jpg");
+    background-repeat: repeat-x;
+}
+
+.menu_items
+{
+    text-align: right;
+    font-size: 1.0in;
+    padding-right: 20px;
+    color: #ffffff;
+}
+
+a:link
+{
+    text-decoration: none;
+    color: #ffffff;
+}
+
+a:visited
+{
+    color: #ffffff;
+}
