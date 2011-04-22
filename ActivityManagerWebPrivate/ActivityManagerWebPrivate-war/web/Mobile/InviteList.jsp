@@ -31,7 +31,7 @@
     </div>
     <div id="invitationList_table">
         <hr/>
-        <a href="NewInvitation.jsp">New Invitation</a>
+        <input type="button" onclick="window.location='NewInvitation.jsp'" value="Add New Invitation" class="invitationNew_buttom"/>
         <%
         //get the wishes
         ReqInvitationMessagePublicVM rwm = new ReqInvitationMessagePublicVM();

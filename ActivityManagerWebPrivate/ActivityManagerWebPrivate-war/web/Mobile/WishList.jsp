@@ -31,7 +31,7 @@
     </div>
     <div id="wish_form">
         <hr/>
-        <a href="NewWish.jsp">Add New Wish</a>
+        <input type="button" onclick="window.location='NewWish.jsp'" value="Add New Wish" class="wishNew_buttom"/>
         <%
         //get the wishes
         ReqWishMessage rwm = new ReqWishMessage();
