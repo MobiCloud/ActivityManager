@@ -9,6 +9,7 @@ import eas.asu.edu.snac.activitymanager.networking.MessageSender;
 import edu.asu.eas.snac.activitymanager.messages.NewInvitationMessage;
 import edu.asu.eas.snac.activitymanager.messages.NewInvitationPublicVMMessage;
 import edu.asu.edu.snac.activitymanager.util.Constants;
+import edu.asu.edu.snac.activitymanager.util.Validate;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -30,30 +31,53 @@ public class ProcessNewInvitation extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+        throws ServletException, IOException
+    {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        try {
-//            NewInvitationMessage invitation = new NewInvitationMessage();
+        try
+        {
             NewInvitationPublicVMMessage invitation = new NewInvitationPublicVMMessage();
+            
             /** HACK: This section is hardcoded it must changed!! */
             invitation.setVmURL("192.168.239.247");
             invitation.setPortNumber(1337);
             /** HACK */
             
             //get the logged in user's username
-            invitation.setUsername((String)request.getSession().getAttribute(Constants.LOGGED_IN_TOKEN));
+            invitation.setUsername((String) request.getSession().getAttribute(Constants.LOGGED_IN_TOKEN));
 
-            //get the rest of the info from the posted vars
-            invitation.setSport(request.getParameter("sport"));
-            invitation.setDate(request.getParameter("date"));
-            invitation.setStarttime(request.getParameter("starttime"));
-            invitation.setEndtime(request.getParameter("endtime"));
-            invitation.setLocation(request.getParameter("location"));
-            try{
-                invitation.setMaxgamer(Integer.parseInt(request.getParameter("maxgamer")));
-            }catch(NumberFormatException ex){
-                
+            // Read all POST variables first
+            String sport = request.getParameter("sport");
+            String date  = request.getParameter("date");
+            String startTime = request.getParameter("starttime");
+            String endTime = request.getParameter("endtime");
+            String location = request.getParameter("location");
+            String maxGamer = request.getParameter("maxgamer");
+            
+            boolean errorFlag = false;
+            StringBuilder errorMessage = new StringBuilder();
+            
+            // Validate all parameters
+            if( !Validate.Sport(sport) )
+            {
+                errorFlag = true;
+                errorMessage.append("Invalid Activity Length");
+            }
+            //else if( !Validate.)
+            
+            //set the invitation parameters
+            invitation.setSport(sport);
+            invitation.setDate(date);
+            invitation.setStarttime(startTime);
+            invitation.setEndtime(endTime);
+            invitation.setLocation(location);
+            try
+            {
+                invitation.setMaxgamer(Integer.parseInt(maxGamer));
+            }
+            catch (NumberFormatException ex)
+            {
             }
 
             //send the wish
@@ -61,7 +85,9 @@ public class ProcessNewInvitation extends HttpServlet {
 
             //redirect back to the menu
             response.sendRedirect("Mobile/InviteList.jsp");
-        } finally { 
+        }
+        finally
+        {
             out.close();
         }
     } 
