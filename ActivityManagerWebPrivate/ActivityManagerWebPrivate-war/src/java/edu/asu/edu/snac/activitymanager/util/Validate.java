@@ -15,6 +15,7 @@ public class Validate
 {
     private static final String EMAIL_PATTERN = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@"
                                                 + "[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+    private static final String PHONE_PATERN = "^[01]?[- .]?\\(?[2-9]\\d{2}\\)?[- .]?\\d{3}[- .]?\\d{4}$";
 
     /**
      * Will receive a String with a user name and will make sure it is of
@@ -81,7 +82,6 @@ public class Validate
     {
         Pattern pattern = Pattern.compile(EMAIL_PATTERN);
         Matcher matcher = pattern.matcher(email);
-
         return matcher.matches();
     }
 
@@ -93,8 +93,9 @@ public class Validate
      */
     public static boolean Phone( String phone )
     {
-        //TODO: Not very robust only checks if there are three segments of XXX.XXX.XXXX and it's 12 characters long
-        return (phone.split("\\.").length == 3 && phone.length() == 12 )? true : false ;
+        Pattern pattern = Pattern.compile(PHONE_PATERN);
+        Matcher matcher = pattern.matcher(phone);
+        return matcher.matches();
     }
 
     /**
