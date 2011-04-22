@@ -7,6 +7,7 @@ package eas.asu.edu.snac.activitymanager.servlets;
 import edu.asu.eas.snac.activitymanager.messages.FeedbackMessage;
 import edu.asu.eas.snac.activitymanager.messages.LoginMessage;
 import eas.asu.edu.snac.activitymanager.networking.MessageSender;
+import edu.asu.edu.snac.activitymanager.util.SHA1;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -42,7 +43,7 @@ public class CheckLogin extends HttpServlet {
 
             LoginMessage lm = new LoginMessage();
             lm.setUsername(username);
-            lm.setPassword(password);
+            lm.setPassword(SHA1.sha1(password));
 
             FeedbackMessage messageResponse = (FeedbackMessage) MessageSender.sendMessage(lm);
             out.println("Send the message.");
