@@ -54,7 +54,7 @@ public class RegisterNewUser extends HttpServlet {
                 reg.setUsername(username);
                 reg.setPassword(SHA1.sha1(password));
                 reg.setEmail(email);
-                reg.setPhone(phone);
+                reg.setPhone(Validate.StripPhoneNum(phone));
 
                 //TODO: I don't know what this is for, ask fredzilla
                 out.println("Phone Number: " + request.getParameter("phoneNumber"));

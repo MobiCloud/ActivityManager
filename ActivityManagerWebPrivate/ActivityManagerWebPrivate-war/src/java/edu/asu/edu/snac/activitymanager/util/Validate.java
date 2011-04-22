@@ -98,6 +98,17 @@ public class Validate
         return matcher.matches();
     }
 
+    public static String StripPhoneNum( String phone )
+    {
+        StringBuilder strippedPhone = new StringBuilder();
+        for( char number : phone.toCharArray() )
+        {
+            if( Character.isDigit(number) )
+                strippedPhone.append(number);
+        }
+        return strippedPhone.toString();
+    }
+
     /**
      * Simply checks if the sport name is within valid character range.
      * @param sport
