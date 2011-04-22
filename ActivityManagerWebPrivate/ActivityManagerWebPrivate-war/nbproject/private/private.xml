@@ -2,12 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/1">
-        <file>file:/E:/ActivityManager/ActivityManagerWebPrivate/ActivityManagerWebPrivate-war/web/InvalidData.jsp</file>
-        <file>file:/E:/ActivityManager/ActivityManagerWebPrivate/ActivityManagerWebPrivate-war/src/java/eas/asu/edu/snac/activitymanager/servlets/RegisterNewUser.java</file>
-        <file>file:/E:/ActivityManager/ActivityManagerWebPrivate/ActivityManagerWebPrivate-war/web/PC/Login.jsp</file>
-        <file>file:/E:/ActivityManager/ActivityManagerWebPrivate/ActivityManagerWebPrivate-war/src/java/eas/asu/edu/snac/activitymanager/servlets/CheckLogin.java</file>
-        <file>file:/E:/ActivityManager/ActivityManagerWebPrivate/ActivityManagerWebPrivate-war/web/PC/NewWish.jsp</file>
-        <file>file:/E:/ActivityManager/ActivityManagerWebPrivate/ActivityManagerWebPrivate-war/src/java/eas/asu/edu/snac/activitymanager/servlets/ProcessNewWish.java</file>
-        <file>file:/E:/ActivityManager/ActivityManagerWebPrivate/ActivityManagerWebPrivate-war/src/java/edu/asu/edu/snac/activitymanager/util/Validate.java</file>
+        <file>file:/C:/Users/GrayBear/ActivityManager/ActivityManagerWebPrivate/ActivityManagerWebPrivate-war/web/Mobile/Register.jsp</file>
     </open-files>
 </project-private>
