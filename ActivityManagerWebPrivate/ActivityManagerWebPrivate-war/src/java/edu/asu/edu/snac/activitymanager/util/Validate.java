@@ -4,15 +4,32 @@
  */
 package edu.asu.edu.snac.activitymanager.util;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  *
  * @author Jose Trigueros
  */
 public class Validate
 {
+    /* Private Constants */
+    private static final String USERNAME_PATTERN = "[a-zA-z]*";
+    private static final String EMAIL_PATTERN = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@"
+                                                + "[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+    private static final String PHONE_PATTERN = "^[01]?[- .]?\\(?[2-9]\\d{2}\\)?"
+                                                + "[- .]?\\d{3}[- .]?\\d{4}$";
+    
+    private static final String DATE_PATTERN = "^(((0?[1-9]|1[012])/(0?[1-9]|1\\d|"
+                                                + "2[0-8])|(0?[13456789]|1[012])/(29|30)|"
+                                                + "(0?[13578]|1[02])/31)/(19|[2-9]\\d)\\d{2}|"
+                                                + "0?2/29/((19|[2-9]\\d)(0[48]|[2468][048]|"
+                                                + "[13579][26])|(([2468][048]|[3579][26])00)))$";
+    private static final String TIME_PATTERN = "^([0-1][0-9]|[2][0-3]):([0-5][0-9])$";
+    
     /**
-     * Will receive a String with a user name and will make sure it is of
-     * appropriate length which we will limit to 4 to 12 standard ASCII characters.
+     * Checks if the given username is of the right length and using the right characters.
+     * appropriate length.
      * TODO: Allow other characters such as numbers and/or periods.
      * @param username
      * @return true if username is valid, false otherwise
@@ -24,25 +41,7 @@ public class Validate
         // First determine if length is valid
         if( Constants.USERNAME_MIN_LENGTH <= username.length() && username.length() < Constants.USERNAME_MAX_LENGTH )
         {
-            isValid = true;
-            // Then we must check that characters are within range.
-            char[] usernameArray = username.toCharArray();
-            for( char currentChar : usernameArray )
-            {
-                // Must be a letter from the alphabet if not break the loop and
-                // return false. Very ugly, more elegant way?
-                if(
-                    !(
-                        (currentChar >= Constants.ASCII_UPPERCASE_BOUNDS[0] && currentChar <= Constants.ASCII_UPPERCASE_BOUNDS[1] ) ||
-                        (currentChar >= Constants.ASCII_LOWERCASE_BOUNDS[0] && currentChar <= Constants.ASCII_LOWERCASE_BOUNDS[1] )
-                     )
-                  )
-                {
-                    isValid = false;
-                    break;
-                }
-                    
-            }
+            isValid = checkMatchingRegex(USERNAME_PATTERN, username);
         }
 
         return isValid;
@@ -64,8 +63,7 @@ public class Validate
         
         return isValid;
     }
-
-
+    
     /**
      * Checks if the email is valid.
      * @param email
@@ -73,20 +71,33 @@ public class Validate
      */
     public static boolean Email( String email )
     {
-        // TODO: Really badly coded, only checks if there is an @ and . 
-        return (email.split("[@\\.]").length == 3) ? true: false;
+        return checkMatchingRegex(EMAIL_PATTERN, email);
     }
 
     /**
-     * Checks if the phone number is valid, it should be in the following format
-     * ###.###.####
+     * Checks if the phone number is valid
      * @param phone
      * @return true if the number is valid, otherwise false
      */
     public static boolean Phone( String phone )
     {
-        //TODO: Not very robust only checks if there are three segments of XXX.XXX.XXXX and it's 12 characters long
-        return (phone.split("\\.").length == 3 && phone.length() == 12 )? true : false ;
+        return checkMatchingRegex(PHONE_PATTERN, phone);
+    }
+
+    /**
+     * Removes all non-Digit characters from the given phone number.
+     * @param phone
+     * @return 
+     */
+    public static String StripPhoneNum( String phone )
+    {
+        StringBuilder strippedPhone = new StringBuilder();
+        for( char number : phone.toCharArray() )
+        {
+            if( Character.isDigit(number) )
+                strippedPhone.append(number);
+        }
+        return strippedPhone.toString();
     }
 
     /**
@@ -98,12 +109,75 @@ public class Validate
     {
         return ( 0 < sport.length() && sport.length() <= Constants.SPORT_MAX_LENGTH )? true : false;
     }
+    
+    /**
+     * Checks if the given time has valid format.
+     * @param time
+     * @return 
+     */
+    public static boolean Time( String time )
+    {
+        return checkMatchingRegex(TIME_PATTERN, time);
+    }
+    
+    /**
+     * Checks if the given date has valid format.
+     * @param date
+     * @return 
+     */
+    public static boolean Date( String date )
+    {
+        return checkMatchingRegex(DATE_PATTERN, date);
+    }
+    
+    /**
+     * Checks if the given location is within the given length limitations.
+     * @param location
+     * @return 
+     */
+    public static boolean Location( String location )
+    {
+        return ( 0 < location.length() && location.length() <= Constants.LOCATION_MAX_LENGTH ) ? true : false;
+    }
+    
+    /**
+     * Checks if the number of players is a within a given range.
+     * @param players
+     * @return If the given number of players is not a number then it'll return false.
+     *         Also, the number must be within a limit in order for this to return true.
+     */
+    public static boolean Players( String players )
+    {
+        int numPlayers;
+        try
+        {
+            numPlayers = Integer.parseInt(players);
+        }
+        catch(NumberFormatException numEx)
+        {
+            return false;
+        }
+        return ( 0 < numPlayers && numPlayers <= Constants.PLAYERS_MAX ) ? true : false;
+    }
+    
+    /**
+     * Given a regex matching pattern and a target string, it'll determine if the string matches
+     * the pattern.
+     * @param regexPattern
+     * @param targetString
+     * @return true if the string matches the regex pattern, otherwise false
+     */
+    private static boolean checkMatchingRegex( String regexPattern, String targetString )
+    {
+        Pattern currentPattern = Pattern.compile(regexPattern);
+        Matcher currentMatcher = currentPattern.matcher(targetString);
+        return currentMatcher.matches();
+    }
+    
     // TODO: Remove using for testing purposes
     public static void main( String[] args )
     {
-        String username = "999.888.1111";
-        System.out.println( Validate.Phone(username) );
+        String username = "aoeuaoue";
+        System.out.println( Validate.Username(username) );
     }
 }
-
-
