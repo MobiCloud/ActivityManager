@@ -41,26 +41,55 @@ public class RegisterNewUser extends HttpServlet {
         try
         {
             // Get all the information from the POST/GET header
-            String username = request.getParameter("username");
-            String password = request.getParameter("password");
-            String email    = request.getParameter("email");
-            String phone    = request.getParameter("phoneNumber");
+            String username     = request.getParameter("username");
+            String password     = request.getParameter("password");
+            String password2    = request.getParameter("password2");
+            String email        = request.getParameter("email");
+            String phone        = request.getParameter("phoneNumber");
+            StringBuilder messageResponse = new StringBuilder();
+            boolean errorFlag = true;
 
             // Check if data is valid
-            if( Validate.Username(username) && Validate.Password(password) && Validate.Email(email) && Validate.Phone(phone) )
+            if (!Validate.Username(username))
+            {
+                messageResponse.append("Invalid Username\n");
+            }
+            else if (!Validate.Password(password))
+            {
+                messageResponse.append( "Invalid Password\n" );
+            }
+            else if( !password.equals(password2) )
+            {
+                messageResponse.append("Passwords do not match!\n");
+            }
+            else if( !Validate.Email(email) )
+            {
+                messageResponse.append("Invalid email address.\n");
+            }
+            else if (!Validate.Phone(phone))
+            {
+                messageResponse.append("Invalid phone number\n");
+            }
+            else
+            {
+                errorFlag = false;
+            }
+            
+            
+            if( !errorFlag )
             {
                 // Create registration message and send it
                 RegisterMessage reg = new RegisterMessage();
                 reg.setUsername(username);
                 reg.setPassword(SHA1.sha1(password));
                 reg.setEmail(email);
-                reg.setPhone(phone);
+                reg.setPhone(Validate.StripPhoneNum(phone));
 
                 //TODO: I don't know what this is for, ask fredzilla
                 out.println("Phone Number: " + request.getParameter("phoneNumber"));
-                FeedbackMessage fbm = (FeedbackMessage)MessageSender.sendMessage(reg);
+                FeedbackMessage fbm = (FeedbackMessage) MessageSender.sendMessage(reg);
                 // TODO: check if fbm returns
-                if( fbm.getMsgType() == FeedbackType.SUCCESS )
+                if (fbm.getMsgType() == FeedbackType.SUCCESS)
                 {
                     request.getSession(true).setAttribute(Constants.LOGGED_IN_TOKEN, username);
                     // Redirect to Main Menu
@@ -69,6 +98,7 @@ public class RegisterNewUser extends HttpServlet {
                 else
                 {
                     //TODO: Send some session variables to acknowledge user
+                    messageResponse.append(fbm.getMsgType());
                     response.sendRedirect("Mobile/Register.jsp");
                 }
 
@@ -81,6 +111,7 @@ public class RegisterNewUser extends HttpServlet {
                 request.getSession().setAttribute("password", password);
                 request.getSession().setAttribute("email", email);
                 request.getSession().setAttribute("phone", phone);
+                request.getSession().setAttribute("message", messageResponse);
                 response.sendRedirect("InvalidData.jsp");
             }
         }
@@ -88,7 +119,7 @@ public class RegisterNewUser extends HttpServlet {
         {
             out.close();
         }
-    } 
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /** 

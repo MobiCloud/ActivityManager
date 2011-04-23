@@ -17,6 +17,7 @@
         <h1>You no Enter Proper Info!!!</h1>
         <img src="http://www.gamesprays.com/images/icons/trollface-3078_preview.jpg"/>
         <p>
+            Reason  :<%= request.getSession().getAttribute("message")%><br>
             Username:<%= request.getSession().getAttribute("username")%><br>
             Password:<%= request.getSession().getAttribute("password")%><br>
             Email   :<%= request.getSession().getAttribute("email")%><br>

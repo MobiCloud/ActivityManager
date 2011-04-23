@@ -8,6 +8,7 @@ package eas.asu.edu.snac.activitymanager.servlets;
 import eas.asu.edu.snac.activitymanager.networking.MessageSender;
 import edu.asu.eas.snac.activitymanager.messages.NewWishMessage;
 import edu.asu.edu.snac.activitymanager.util.Constants;
+import edu.asu.edu.snac.activitymanager.util.Validate;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -29,13 +30,16 @@ public class ProcessNewWish extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+        throws ServletException, IOException
+    {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        try {
+        /*
+        try
+        {
             NewWishMessage wish = new NewWishMessage();
             //get the logged in user's username
-            wish.setUsername((String)request.getSession().getAttribute(Constants.LOGGED_IN_TOKEN));
+            wish.setUsername((String) request.getSession().getAttribute(Constants.LOGGED_IN_TOKEN));
 
             //get the rest of the info from the posted vars
             wish.setSport(request.getParameter("sport"));
@@ -49,7 +53,75 @@ public class ProcessNewWish extends HttpServlet {
 
             //redirect back to the menu
             response.sendRedirect("Mobile/WishList.jsp");
-        } finally { 
+        }
+        finally
+        {
+            out.close();
+        }
+         */
+        
+        try
+        {
+            NewWishMessage wish = new NewWishMessage();
+                        
+            //get the logged in user's username
+            wish.setUsername((String) request.getSession().getAttribute(Constants.LOGGED_IN_TOKEN));
+
+            // Read all POST variables first
+            String sport = request.getParameter("sport");
+            String date  = request.getParameter("date");
+            String startTime = request.getParameter("starttime");
+            String endTime = request.getParameter("endtime");
+            String location = request.getParameter("location");
+            
+            boolean errorFlag = true;
+            StringBuilder errorMessage = new StringBuilder();
+            
+            // Validate all parameters
+            // TODO: Put all these error strings in Constants
+            if( !Validate.Sport(sport) )
+            {
+                errorMessage.append("Invalid Activity Length");
+            }
+            else if( !Validate.Time(startTime) || !Validate.Time(endTime) )
+            {
+                errorMessage.append("Invalid Time Format");
+            }
+            else if( !Validate.Location(location) )
+            {
+                errorMessage.append("Location too long.");
+            }
+            else if( !Validate.Date(date) )
+            {
+                errorMessage.append("Invalid Date Format");
+            }
+            else
+            {
+                errorFlag = false;
+            }
+            
+            if( !errorFlag )
+            {
+                //set the wish parameters
+                wish.setSport(sport);
+                wish.setDate(date);
+                wish.setStarttime(startTime);
+                wish.setEndtime(endTime);
+                wish.setLocation(location);
+                //send the wish
+                MessageSender.sendMessage(wish);
+
+                //redirect back to the menu
+                response.sendRedirect("Mobile/WishList.jsp");
+            }
+            else
+            {
+                request.getSession(true).setAttribute("errorMessage",errorMessage.toString());
+                response.sendRedirect("Mobile/NewWish.jsp");
+            }
+        }
+        finally
+        {
             out.close();
         }
     } 

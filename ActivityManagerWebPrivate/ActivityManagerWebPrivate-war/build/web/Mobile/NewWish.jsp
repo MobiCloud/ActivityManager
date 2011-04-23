@@ -19,6 +19,26 @@
         <link rel="stylesheet" type="text/css" href="CSS/wishList.css" />
     </head>
     <body>
+        <%
+        // TODO: Goufu this is my place holder.
+        if( request.getSession().getAttribute("errorMessage") != null )
+        {    
+        %>
+        <p style="color: #ffffff">
+            Error: <%=request.getSession().getAttribute("errorMessage")%>
+                
+        </p>
+        <%
+        }
+        else{
+        %>
+                <p style="color: #ffffff">
+            No Error.
+                
+        </p>
+        <%
+        }
+        %>
     <div id="wishNew_upper">
             <img alt="logo" src="images/new_wish_logo.jpg" border="0" style="width:100%;">
     </div>
