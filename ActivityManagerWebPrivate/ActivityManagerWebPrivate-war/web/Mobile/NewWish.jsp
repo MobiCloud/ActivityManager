@@ -22,13 +22,16 @@
         <%
         // TODO: Goufu this is my place holder.
         if( request.getSession().getAttribute("errorMessage") != null )
-        {    
+        {
+               
         %>
         <p style="color: #ffffff">
             Error: <%=request.getSession().getAttribute("errorMessage")%>
                 
         </p>
         <%
+            // Remove the errorMessage attribute
+            session.removeAttribute("errorMessage");
         }
         else{
         %>
@@ -37,8 +40,10 @@
                 
         </p>
         <%
-        }
+        // Close else
+            }
         %>
+        
     <div id="wishNew_upper">
             <img alt="logo" src="images/new_wish_logo.jpg" border="0" style="width:100%;">
     </div>
