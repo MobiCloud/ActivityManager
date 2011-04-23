@@ -72,6 +72,7 @@ public class ProcessNewWish extends HttpServlet {
             String date  = request.getParameter("date");
             String startTime = request.getParameter("starttime");
             String endTime = request.getParameter("endtime");
+            String location = request.getParameter("location");
             
             boolean errorFlag = true;
             StringBuilder errorMessage = new StringBuilder();
@@ -85,6 +86,10 @@ public class ProcessNewWish extends HttpServlet {
             else if( !Validate.Time(startTime) || !Validate.Time(endTime) )
             {
                 errorMessage.append("Invalid Time Format");
+            }
+            else if( !Validate.Location(location) )
+            {
+                errorMessage.append("Location too long.");
             }
             else if( !Validate.Date(date) )
             {
@@ -102,7 +107,7 @@ public class ProcessNewWish extends HttpServlet {
                 wish.setDate(date);
                 wish.setStarttime(startTime);
                 wish.setEndtime(endTime);
-
+                wish.setLocation(location);
                 //send the wish
                 MessageSender.sendMessage(wish);
 
@@ -111,7 +116,7 @@ public class ProcessNewWish extends HttpServlet {
             }
             else
             {
-                request.getSession().setAttribute("errorMessage",errorMessage.toString());
+                request.getSession(true).setAttribute("errorMessage",errorMessage.toString());
                 response.sendRedirect("Mobile/NewWish.jsp");
             }
         }

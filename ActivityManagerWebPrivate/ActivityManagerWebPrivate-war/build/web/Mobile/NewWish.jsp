@@ -30,6 +30,14 @@
         </p>
         <%
         }
+        else{
+        %>
+                <p style="color: #ffffff">
+            No Error.
+                
+        </p>
+        <%
+        }
         %>
     <div id="wishNew_upper">
             <img alt="logo" src="images/new_wish_logo.jpg" border="0" style="width:100%;">
