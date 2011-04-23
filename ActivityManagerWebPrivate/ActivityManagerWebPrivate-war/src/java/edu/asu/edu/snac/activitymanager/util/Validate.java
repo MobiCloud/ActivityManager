@@ -131,6 +131,36 @@ public class Validate
     }
     
     /**
+     * Checks if the given location is within the given length limitations.
+     * @param location
+     * @return 
+     */
+    public static boolean Location( String location )
+    {
+        return ( 0 < location.length() && location.length() <= Constants.LOCATION_MAX_LENGTH ) ? true : false;
+    }
+    
+    /**
+     * Checks if the number of players is a within a given range.
+     * @param players
+     * @return If the given number of players is not a number then it'll return false.
+     *         Also, the number must be within a limit in order for this to return true.
+     */
+    public static boolean Players( String players )
+    {
+        int numPlayers;
+        try
+        {
+            numPlayers = Integer.parseInt(players);
+        }
+        catch(NumberFormatException numEx)
+        {
+            return false;
+        }
+        return ( 0 < numPlayers && numPlayers <= Constants.PLAYERS_MAX ) ? true : false;
+    }
+    
+    /**
      * Given a regex matching pattern and a target string, it'll determine if the string matches
      * the pattern.
      * @param regexPattern

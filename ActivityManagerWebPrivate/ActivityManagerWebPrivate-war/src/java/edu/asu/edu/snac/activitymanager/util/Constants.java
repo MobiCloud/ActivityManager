@@ -20,7 +20,4 @@ public class Constants {
     public static final int LOCATION_MAX_LENGTH = 30;
 
     public static final int PLAYERS_MAX = 9999;
-    
-    public static final char[] ASCII_UPPERCASE_BOUNDS = {'A','Z'};
-    public static final char[] ASCII_LOWERCASE_BOUNDS = {'a', 'z'};
 }
