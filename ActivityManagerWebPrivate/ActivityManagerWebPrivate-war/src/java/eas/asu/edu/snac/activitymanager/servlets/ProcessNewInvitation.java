@@ -59,32 +59,53 @@ public class ProcessNewInvitation extends HttpServlet {
             StringBuilder errorMessage = new StringBuilder();
             
             // Validate all parameters
+            // TODO: Put all these error strings in Constants
             if( !Validate.Sport(sport) )
             {
                 errorMessage.append("Invalid Activity Length");
             }
-            // TOOD: Validate date
-            //else if( !Validate.)
+            else if( !Validate.Time(startTime) || !Validate.Time(endTime) )
+            {
+                errorMessage.append("Invalid Time Format");
+            }
+            else if( !Validate.Location(location) )
+            {
+                errorMessage.append("Location too long.");
+            }
+            else if( !Validate.Date(date) )
+            {
+                errorMessage.append("Invalid Date Format");
+            }
+            else if( !Validate.Players(maxGamer) )
+            {
+                errorMessage.append("Invalid number of players.");
+            }
+            else
+            {
+                errorFlag = false;
+            }
             
-            //set the invitation parameters
-            invitation.setSport(sport);
-            invitation.setDate(date);
-            invitation.setStarttime(startTime);
-            invitation.setEndtime(endTime);
-            invitation.setLocation(location);
-            try
+            if( !errorFlag )
             {
+                //set the invitation parameters
+                invitation.setSport(sport);
+                invitation.setDate(date);
+                invitation.setStarttime(startTime);
+                invitation.setEndtime(endTime);
+                invitation.setLocation(location);
                 invitation.setMaxgamer(Integer.parseInt(maxGamer));
+
+                //send the wish
+                MessageSender.sendMessage(invitation);
+
+                //redirect back to the menu
+                response.sendRedirect("Mobile/InviteList.jsp");
             }
-            catch (NumberFormatException ex)
+            else
             {
+                request.getSession().setAttribute("errorMessage",errorMessage.toString());
+                response.sendRedirect("Mobile/NewInvitation.jsp");
             }
-
-            //send the wish
-            MessageSender.sendMessage(invitation);
-
-            //redirect back to the menu
-            response.sendRedirect("Mobile/InviteList.jsp");
         }
         finally
         {
