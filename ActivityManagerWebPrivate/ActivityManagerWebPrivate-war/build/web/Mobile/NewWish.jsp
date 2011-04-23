@@ -21,11 +21,11 @@
     <body>
         <%
         // TODO: Goufu this is my place holder.
-        if( request.getParameter("errorMessage") != null )
+        if( request.getSession().getAttribute("errorMessage") != null )
         {    
         %>
         <p style="color: #ffffff">
-            Error: <%=request.getParameter("errorMessage")%>
+            Error: <%=request.getSession().getAttribute("errorMessage")%>
                 
         </p>
         <%
