@@ -95,7 +95,7 @@ public class ProcessNewInvitation extends HttpServlet {
                 invitation.setLocation(location);
                 invitation.setMaxgamer(Integer.parseInt(maxGamer));
 
-                //send the wish
+                //send the invitation
                 MessageSender.sendMessage(invitation);
 
                 //redirect back to the menu
