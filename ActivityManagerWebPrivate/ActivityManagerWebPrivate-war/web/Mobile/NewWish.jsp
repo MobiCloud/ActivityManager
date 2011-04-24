@@ -34,15 +34,6 @@
             // Remove the errorMessage attribute
             session.removeAttribute("errorMessage");
         }
-        else{
-        %>
-                <p style="color: #ffffff">
-            No Error.
-                
-        </p>
-        <%
-        // Close else
-            }
         %>
         
     <div id="wishNew_upper">

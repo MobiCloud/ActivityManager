@@ -86,3 +86,8 @@ a:visited
 {
     color: #ffffff;
 }
+
+select
+{
+    font-size: 0.3in;
+}
