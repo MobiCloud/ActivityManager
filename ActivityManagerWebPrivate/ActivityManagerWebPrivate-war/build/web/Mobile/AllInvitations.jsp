@@ -64,7 +64,7 @@
         %>
         <hr/>
     <input type="button" onclick="window.location='Menu.jsp'" value="Back" id="invitation_back"/>
-    <br/>
+    <br/><br/>
     </div>
     </body>
 </html>

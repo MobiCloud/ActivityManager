@@ -25,7 +25,7 @@
     </head>
     <body>
     <div id="wish_upper">
-            <img alt="logo"  src="images/my_wish.jpg" border="0" style="width:70%;">
+            <img alt="logo"  src="images/my_wish.jpg" border="0" style="width:60%;">
     </div>
     <div id="wish_mid">
     </div>
@@ -62,5 +62,6 @@
     <hr/>
     <input type="button" onclick="window.location='Menu.jsp'" value="Back" class="wishNew_buttom"/>
     </div>
+    <br/><br/>
     </body>
 </html>
