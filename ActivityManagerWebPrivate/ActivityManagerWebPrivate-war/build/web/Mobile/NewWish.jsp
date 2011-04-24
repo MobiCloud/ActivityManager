@@ -17,6 +17,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Add Wish</title>
         <link rel="stylesheet" type="text/css" href="CSS/wishList.css" />
+        <%@include file="../WEB-INF/jspf/jsCalendarInclude.jspf" %>
     </head>
     <body>
         <%
@@ -50,14 +51,15 @@
     <div id="wishNew_mid">
     </div>
     <div id="wishNew_form">
-        <form action="../ProcessNewWish" method="post">
+        <form action="../ProcessNewWish" method="post" name="dataInput">
             Activity: <br/>
             <input type="text" name="sport" class="wishNew_input"/><br/>
             <%@include file="../WEB-INF/jspf/Time.jspf" %><br/>
             Location: <br/>
             <input type="text" name="location" class="wishNew_input"/><br/>
             Date: <br/>
-            <input type="text" name="date" class="wishNew_input"/><br/><br/>
+            <input type="text" name="date" class="wishNew_input" 
+                   onClick="displayDatePicker('date', this)"/><br/><br/>
             <input type="submit" value="Add New Wish" class="wishNew_buttom"/><br/><br/>
             <input type="button" onclick="window.location='javascript:history.go(-1)'" value="Cancel" class="wishNew_buttom"/><br/><br/>
         </form>

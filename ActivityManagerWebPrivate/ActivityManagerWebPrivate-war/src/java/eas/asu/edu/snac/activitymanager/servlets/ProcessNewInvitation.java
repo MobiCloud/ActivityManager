@@ -51,7 +51,7 @@ public class ProcessNewInvitation extends HttpServlet {
             String sport = request.getParameter("sport");
             String date  = request.getParameter("date");
             String startTime = request.getParameter("startHour") + ":" + request.getParameter("startMinute");
-            String endTime = request.getParameter("endMinute") + ":" + request.getParameter("endMinute");
+            String endTime = request.getParameter("endHour") + ":" + request.getParameter("endMinute");
             String location = request.getParameter("location");
             String maxGamer = request.getParameter("maxgamer");
             
