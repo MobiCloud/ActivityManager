@@ -1,3 +1,56 @@
-<%-- any content can be specified here e.g.: --%>
+<%-- 
+I decided to take this one out and make it a jsp segment as it will be used in
+two different places. It makes it easier to edit etc
+--%>
+<%@page import="edu.asu.edu.snac.activitymanager.util.Constants"%>
 <%@ page pageEncoding="UTF-8" %>
-<h2>Hello World!</h2>
+Start Time: <br/>
+<select name="startHour">
+        <%
+        for( int i = 0; i <= Constants.HOUR_MAX ; i++ )
+        {
+            if( i < 10 )
+                out.print("<option value=0"+i+">0"+i+"</option>");
+            else
+                out.print("<option value="+i+">"+i+"</option>");
+        }
+        %>
+</select>
+:
+<select name="startMinute">
+        <%
+        for( int i = 0; i <= Constants.MINUTE_MAX; i++ )
+        {
+            if( i < 10 )
+                out.print("<option value=0"+i+">0"+i+"</option>");
+            else
+                out.print("<option value="+i+">"+i+"</option>");
+        }
+        %>
+</select>
+<br/>
+
+End Time: <br/>
+<select name="endHour">
+        <%
+        for( int i = 0; i <= Constants.HOUR_MAX ; i++ )
+        {
+            if( i < 10 )
+                out.print("<option value=0"+i+">0"+i+"</option>");
+            else
+                out.print("<option value="+i+">"+i+"</option>");
+        }
+        %>
+</select>
+:
+<select name="endMinute">
+        <%
+        for( int i = 0; i <= Constants.MINUTE_MAX; i++ )
+        {
+            if( i < 10 )
+                out.print("<option value=0"+i+">0"+i+"</option>");
+            else
+                out.print("<option value="+i+">"+i+"</option>");
+        }
+        %>
+</select>

@@ -2,14 +2,14 @@
     Document   : NewWish
     Created on : Dec 7, 2010, 3:16:28 PM
     Author     : Fred
+<%@page import="edu.asu.edu.snac.activitymanager.util.CheckLoggedIn"%>
 --%>
 
-<%@page import="edu.asu.edu.snac.activitymanager.util.CheckLoggedIn"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
 <%
-    String loggedInUser = CheckLoggedIn.checkLoggedIn(request, response);
+    //String loggedInUser = CheckLoggedIn.checkLoggedIn(request, response);
 %>
 
 <html>
@@ -23,6 +23,7 @@
 
         <form action="ProcessNewWish" method="post">
             Sport: <input type="text" name="sport" /><br/>
+            <%@ include file="../WEB-INF/jspf/Time.jspf"%>
             Start Time: <input type="text" name="starttime" /><br/>
             End Time: <input type="text" name="endtime" /><br/>
             Location: <input type="text" name="location" /><br/>

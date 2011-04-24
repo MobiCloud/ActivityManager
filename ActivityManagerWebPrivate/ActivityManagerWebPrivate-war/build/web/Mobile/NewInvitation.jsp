@@ -28,10 +28,7 @@
         <form action="../ProcessNewInvitation" method="post">
             Activity:<br/>
             <input type="text" name="sport" class="invitationNew_input"/><br/>
-            Start Time: <br/>
-            <input type="text" name="starttime" class="invitationNew_input"/><br/>
-            End Time: <br/>
-            <input type="text" name="endtime" class="invitationNew_input"/><br/>
+            <%@include file="../WEB-INF/jspf/Time.jspf" %><br/>
             Location: <br/>
             <input type="text" name="location" class="invitationNew_input"/><br/>
             Date: <br/>

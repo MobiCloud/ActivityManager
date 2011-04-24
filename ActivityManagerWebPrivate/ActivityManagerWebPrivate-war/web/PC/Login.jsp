@@ -14,7 +14,7 @@
         <title>Activity Manager - Login</title>
     </head>
     <body>
-        PC Login
+        PC Login snthaouethaonsuhetao
         <form action="CheckLogin" method="post">
                 Username: <input name="username" type="text" /><br/>
                 Password: <input name="password" type="password" /><br/>

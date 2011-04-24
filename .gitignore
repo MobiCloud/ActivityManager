@@ -6,6 +6,7 @@
 *.netbeans_automatic_build
 *.netbeans_update_resources
 *.orig
+ActivityManagerWebPrivate/dist/gfdeploy/
 ActivityManagerWebPrivate/ActivityManagerWebPrivate-war/nbproject/private/private.properties
 ActivityManagerWebPrivate/ActivityManagerWebPrivate-war/nbproject/private/private.xml
 ActivityManagerWebPrivate/ActivityManagerWebPrivate-war/nbproject/project.properties

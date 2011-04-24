@@ -53,10 +53,7 @@
         <form action="../ProcessNewWish" method="post">
             Activity: <br/>
             <input type="text" name="sport" class="wishNew_input"/><br/>
-            Start Time: <br/>
-            <input type="text" name="starttime" class="wishNew_input"/><br/>
-            End Time: <br/>
-            <input type="text" name="endtime" class="wishNew_input"/><br/>
+            <%@include file="../WEB-INF/jspf/Time.jspf" %><br/>
             Location: <br/>
             <input type="text" name="location" class="wishNew_input"/><br/>
             Date: <br/>

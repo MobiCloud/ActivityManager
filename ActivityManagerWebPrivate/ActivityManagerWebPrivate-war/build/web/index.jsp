@@ -26,7 +26,7 @@
             }
             else
             {
-                response.sendRedirect("Mobile/Login.jsp");
+                response.sendRedirect("Mobile/NewInvitation.jsp");
             }
         %>
     </body>
