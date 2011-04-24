@@ -26,7 +26,7 @@
             }
             else
             {
-                response.sendRedirect("Mobile/NewWish.jsp");
+                response.sendRedirect("Mobile/Login.jsp");
             }
         %>
     </body>
