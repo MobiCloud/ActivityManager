@@ -26,7 +26,7 @@
             }
             else
             {
-                response.sendRedirect("Mobile/NewInvitation.jsp");
+                response.sendRedirect("Mobile/NewWish.jsp");
             }
         %>
     </body>

@@ -77,7 +77,6 @@ public class ProcessNewWish extends HttpServlet {
                 errorFlag = false;
             }
             
-            
             if( !errorFlag )
             {
                 //set the wish parameters
