@@ -1,12 +1,12 @@
 body
 {
-    background-color: #000000;
+    background-color: #ffffff;
     margin:0px;
 }
 
 #login_upper
 {
-    background-color: #bc1d1d;
+    background-color: #218ab9;
     height: 70%;
     text-align: center;
     padding-top:3%;
@@ -23,13 +23,13 @@ body
 .notes
 {
     font-weight: bold;
-    color: #000000;
+    color: #ffffff;
 }
 
 .login_button
 {
     width: 80%;
-    background-color: #bc1d1d;
+    background-color: #218ab9;
     height: 0.6in;
     border-bottom-color: #000000;
     border-bottom-style: none;
@@ -49,7 +49,7 @@ body
 #login_form
 {
     text-align: center;
-    color: #ffffff;
+    color: #000000;
     font-size: 0.3in;
 }
 
@@ -57,7 +57,7 @@ body
 {
     text-align: center;
     font-weight: bold;
-    color: #ffffff;
+    color: #000000;
     font-size: 0.4in;
 }
 
@@ -71,7 +71,7 @@ body
 #register_OK
 {
     width: 40%;
-    background-color: #bc1d1d;
+    background-color: #218ab9;
     color: #ffffff;
     text-align: center;
     font-weight: bold;
@@ -84,7 +84,7 @@ body
 #register_back
 {
     width: 40%;
-    background-color: #bc1d1d;
+    background-color: #218ab9;
     color: #ffffff;
     text-align: center;
     font-weight: bold;
@@ -98,13 +98,12 @@ body
 #register_form
 {
     margin: auto;
-    color: #ffffff;
+    color: #000000;
     font-size: 0.3in;
 }
 
 #register_mid
 {
-    margin-top: -5px;
     background-image: url("../images/register_mid.jpg");
     background-repeat: repeat-x;
     height: 31px;

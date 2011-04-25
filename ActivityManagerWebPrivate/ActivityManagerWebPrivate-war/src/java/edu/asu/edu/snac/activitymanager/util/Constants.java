@@ -18,6 +18,9 @@ public class Constants {
 
     public static final int SPORT_MAX_LENGTH = 30;
     public static final int LOCATION_MAX_LENGTH = 30;
+    
+    public static final int HOUR_MAX = 23;
+    public static final int MINUTE_MAX = 59;
 
     public static final int PLAYERS_MAX = 9999;
 }

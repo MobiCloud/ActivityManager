@@ -1,12 +1,12 @@
 body
 {
-    background-color: #000000;
+    background-color: #ffffff;
     margin:0px;
 }
 
 #menu_upper
 {
-    background-color: #bc1d1d;
+    background-color: #218ab9;
     height: 50%;
     text-align: center;
     padding-top:5px;
@@ -25,16 +25,17 @@ body
     text-align: right;
     font-size: 1.0in;
     padding-right: 20px;
-    color: #ffffff;
+    color: #000000;
+    font-weight: bold;
 }
 
 a:link
 {
     text-decoration: none;
-    color: #ffffff;
+    color: #000000;
 }
 
 a:visited
 {
-    color: #ffffff;
+    color: #000000;
 }

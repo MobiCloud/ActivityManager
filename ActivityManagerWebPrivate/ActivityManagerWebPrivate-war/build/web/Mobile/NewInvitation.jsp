@@ -17,8 +17,24 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Add Invitation</title>
         <link rel="stylesheet" type="text/css" href="CSS/invitationList.css" />
+        <%@include file="../WEB-INF/jspf/jsCalendarInclude.jspf" %>
     </head>
     <body>
+        <%
+        // TODO: Goufu this is my place holder.
+        if( request.getSession().getAttribute("errorMessage") != null )
+        {
+               
+        %>
+        <p style="color: #ffffff">
+            Error: <%=request.getSession().getAttribute("errorMessage")%>
+                
+        </p>
+        <%
+            // Remove the errorMessage attribute
+            session.removeAttribute("errorMessage");
+        }
+        %>
     <div id="invitationNew_upper">
         <img alt="logo" src="images/new_invitation_logo.jpg" border="0" style="width: 100%;">
     </div>
@@ -28,14 +44,12 @@
         <form action="../ProcessNewInvitation" method="post">
             Activity:<br/>
             <input type="text" name="sport" class="invitationNew_input"/><br/>
-            Start Time: <br/>
-            <input type="text" name="starttime" class="invitationNew_input"/><br/>
-            End Time: <br/>
-            <input type="text" name="endtime" class="invitationNew_input"/><br/>
+            <%@include file="../WEB-INF/jspf/Time.jspf" %><br/>
             Location: <br/>
             <input type="text" name="location" class="invitationNew_input"/><br/>
             Date: <br/>
-            <input type="text" name="date" class="invitationNew_input"/><br/>
+            <input type="text" name="date" class="invitationNew_input"
+                   onClick="displayDatePicker('date', this)"/><br/>
             Max Players: <br/>
             <input type="text" name="maxgamer" class="invitationNew_input"/><br/><br/>
             <input type="submit" value="Add New Invitation" class="invitationNew_buttom"/><br/><br/>

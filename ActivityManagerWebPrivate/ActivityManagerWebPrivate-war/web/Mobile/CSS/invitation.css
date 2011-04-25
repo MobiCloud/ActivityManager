@@ -1,12 +1,12 @@
 body
 {
-    background-color: #000000;
+    background-color: #ffffff;
     margin:0px;
 }
 
 #invitation_upper
 {
-    background-color: #bc1d1d;
+    background-color: #218ab9;
     height: 70%;
     text-align: center;
     padding-top:3%;
@@ -14,7 +14,6 @@ body
 
 #invitation_mid
 {
-    margin-top: -5px;
     height:99px;
     background-image: url("../images/upper_back.jpg");
     background-repeat: repeat-x;
@@ -22,8 +21,8 @@ body
 
 #invitation_table
 {
-    font-size: 0.2in;
-    color:#ffffff;
+    font-size: 0.4in;
+    color:#000000;
     border: 0;
     text-align: center;
 }
@@ -31,7 +30,7 @@ body
 #invitation_back
 {
     width: 40%;
-    background-color: #bc1d1d;
+    background-color: #218ab9;
     color: #ffffff;
     text-align: center;
     font-weight: bold;

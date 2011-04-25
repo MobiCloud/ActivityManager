@@ -34,31 +34,7 @@ public class ProcessNewWish extends HttpServlet {
     {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        /*
-        try
-        {
-            NewWishMessage wish = new NewWishMessage();
-            //get the logged in user's username
-            wish.setUsername((String) request.getSession().getAttribute(Constants.LOGGED_IN_TOKEN));
 
-            //get the rest of the info from the posted vars
-            wish.setSport(request.getParameter("sport"));
-            wish.setDate(request.getParameter("date"));
-            wish.setStarttime(request.getParameter("starttime"));
-            wish.setEndtime(request.getParameter("endtime"));
-            wish.setLocation(request.getParameter("location"));
-
-            //send the wish
-            MessageSender.sendMessage(wish);
-
-            //redirect back to the menu
-            response.sendRedirect("Mobile/WishList.jsp");
-        }
-        finally
-        {
-            out.close();
-        }
-         */
         
         try
         {
@@ -70,12 +46,13 @@ public class ProcessNewWish extends HttpServlet {
             // Read all POST variables first
             String sport = request.getParameter("sport");
             String date  = request.getParameter("date");
-            String startTime = request.getParameter("starttime");
-            String endTime = request.getParameter("endtime");
+            String startTime = request.getParameter("startHour") + ":" + request.getParameter("startMinute");
+            String endTime = request.getParameter("endHour") + ":" + request.getParameter("endMinute");
             String location = request.getParameter("location");
             
             boolean errorFlag = true;
             StringBuilder errorMessage = new StringBuilder();
+            
             
             // Validate all parameters
             // TODO: Put all these error strings in Constants
@@ -89,7 +66,7 @@ public class ProcessNewWish extends HttpServlet {
             }
             else if( !Validate.Location(location) )
             {
-                errorMessage.append("Location too long.");
+                errorMessage.append("Invalid Location Length");
             }
             else if( !Validate.Date(date) )
             {

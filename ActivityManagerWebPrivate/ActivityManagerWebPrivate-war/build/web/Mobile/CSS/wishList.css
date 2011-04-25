@@ -1,20 +1,19 @@
 body
 {
-    background-color: #000000;
+    background-color: #ffffff;
     margin:0px;
 }
 
 #wish_upper
 {
     padding-top: 3%;
-    background-color: #bc1d1d;
+    background-color: #218ab9;
     height: 70%;
     text-align: center;
 }
 
 #wish_mid
 {
-    margin-top: -5px;
     height:99px;
     background-image: url("../images/upper_back.jpg");
     background-repeat: repeat-x;
@@ -23,15 +22,14 @@ body
 #wish_form
 {
     font-size: 0.4in;
-    color:#ffffff;
+    color:#000000;
     border: 0;
     text-align: center;
 }
 
 #wishNew_upper
 {
-    background-color: #bc1d1d;
-    height: 70%;
+    background-color: #218ab9;
     text-align: center;
 }
 
@@ -47,7 +45,7 @@ body
 {
     text-align: center;
     font-size: 0.3in;
-    color:#ffffff;
+    color:#000000;
 }
 
 .wishNew_input
@@ -60,7 +58,7 @@ body
 .wishNew_buttom
 {
     width: 80%;
-    background-color: #bc1d1d;
+    background-color: #218ab9;
     height: 0.6in;
     border-bottom-color: #000000;
     border-bottom-style: none;
@@ -73,11 +71,16 @@ body
 a:link
 {
     text-decoration: none;
-    color: #ffffff;
+    color: #000000;
     font-size: 0.4in;
 }
 
 a:visited
 {
-    color: #ffffff;
+    color: #000000;
+}
+
+select
+{
+    font-size: 0.3in;
 }
