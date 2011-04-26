@@ -4,6 +4,7 @@
     Author     : Fred
 --%>
 
+<%@page import="edu.asu.edu.snac.activitymanager.util.Constants"%>
 <%@page import="edu.asu.edu.snac.activitymanager.util.CheckLoggedIn"%>
 <%@page import="edu.asu.eas.snac.activitymanager.messages.InvitationItem"%>
 <%@page import="edu.asu.eas.snac.activitymanager.messages.InvitationListMessage"%>
@@ -36,8 +37,9 @@
         /** HACK: This section is hardcoded it must changed!! */
         rwm.setVmURL("192.168.239.247");
         rwm.setPortNumber(1337);
-        rwm.setUsername("Jose");
         /** HACK */
+        
+        rwm.setUsername( request.getParameter(Constants.LOGGED_IN_TOKEN) );
 
         InvitationListMessage invitations = (InvitationListMessage)MessageSender.sendMessage(rwm);
         %>
