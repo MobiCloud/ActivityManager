@@ -16,6 +16,10 @@
         <servlet-name>RegisterNewUser</servlet-name>
         <servlet-class>eas.asu.edu.snac.activitymanager.servlets.RegisterNewUser</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ProcessInvitationRequest</servlet-name>
+        <servlet-class>eas.asu.edu.snac.activitymanager.servlets.ProcessInvitationRequest</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CheckLogin</servlet-name>
         <url-pattern>/CheckLogin</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>RegisterNewUser</servlet-name>
         <url-pattern>/RegisterNewUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProcessInvitationRequest</servlet-name>
+        <url-pattern>/ProcessInvitationRequest</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

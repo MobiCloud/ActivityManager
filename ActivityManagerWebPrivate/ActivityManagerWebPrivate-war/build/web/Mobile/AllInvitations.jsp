@@ -14,7 +14,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
 <%
-            String loggedInUser = CheckLoggedIn.checkLoggedIn(request, response);
+    String loggedInUser = CheckLoggedIn.checkLoggedIn(request, response);
 %>
 
 <html>
@@ -31,36 +31,22 @@
         </div>
         <div id="invitation_table">
             <%
-                        //get the wishes
-                        GetAllInvitationMessagePublicVM rwm = new GetAllInvitationMessagePublicVM();
+                //get the wishes
+                GetAllInvitationMessagePublicVM rwm = new GetAllInvitationMessagePublicVM();
 
-                        /** HACK: This section is hardcoded it must changed!! */
-                        rwm.setVmURL("192.168.239.247");
-                        rwm.setPortNumber(1337);
-                        /** HACK */
-                        // Request the data giving the user as a parameter
-                        rwm.setUsername(loggedInUser);
-                        InvitationListMessage invitations = (InvitationListMessage) MessageSender.sendMessage(rwm);
+                /** HACK: This section is hardcoded it must changed!! */
+                rwm.setVmURL("192.168.239.247");
+                rwm.setPortNumber(1337);
+                /** HACK */
+                // Request the data giving the user as a parameter
+                rwm.setUsername(loggedInUser);
+                InvitationListMessage invitations = (InvitationListMessage) MessageSender.sendMessage(rwm);
             %>
-            <!-- Dummy Remove -->
-            <table align="center">
-                <tr>
-                    <td   align="left" width="40%">Sport type: Golf</td><td   align="left"  width="40%">Date: 04/30/2011</td>
-                </tr>
-                <tr>
-                    <td   align="left" width="40%">Start time: 01:00</td><td   align="left" width="40%">End time: 00:01</td>
-
-                </tr>
-                <tr>
-                    <td   align="left" width="40%">Activity location: Tempe Golf Course</td><td   align="left" width="40%">Maximum players wanted: 18</td>
-                </tr>
-            </table>
 
             <%
-                        // TODO: Need to handle exception like it was done for the invitations
-                        for (int i = 0; invitations != null && invitations.getAllItems() != null && i < invitations.getAllItems().length; i++)
-                        {
-                            InvitationItem tmp = invitations.getItem(i);
+                // TODO: Need to handle exception like it was done for the invitations
+                for (int i = 0; invitations != null && invitations.getAllItems() != null && i < invitations.getAllItems().length; i++) {
+                    InvitationItem tmp = invitations.getItem(i);
             %>
             <hr/>
             <table align="center">
@@ -75,31 +61,26 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                            <%
-                                              String appendInput = "";
-                                              String invitationRequest = "";
-                                              if (tmp.isUserOnGame())
-                                              {
-                                                  appendInput = "value=\"Leave\"";
-                                                  invitationRequest = Constants.INVITATION_LEAVE;
-                                              }
-                                              else if (tmp.getCurrentgamer() == tmp.getMaxgamer())
-                                              {
-                                                  appendInput = "value=\"Full\" disabled=\"true\"";
-                                              }
-                                              else
-                                              {
-                                                  appendInput = "value=\"Join\"";
-                                                  invitationRequest = Constants.INVITATION_JOIN;
-                                              }
-                            %>
-                            <a href="../ProcessInvitiationRequest?invitationID=<%=tmp.getInviteID()%>&invitationRequest=<%=invitationRequest%>" ><input type="button" name="activityRequest" id="invitation_back" <%= appendInput%> /></a>
+                        <%
+                            String appendInput = "";
+                            String invitationRequest = "";
+                            if (tmp.isUserOnGame()) {
+                                appendInput = "value=\"Leave\"";
+                                invitationRequest = Constants.INVITATION_LEAVE;
+                            } else if (tmp.getCurrentgamer() == tmp.getMaxgamer()) {
+                                appendInput = "value=\"Full\" disabled=\"true\"";
+                            } else {
+                                appendInput = "value=\"Join\"";
+                                invitationRequest = Constants.INVITATION_JOIN;
+                            }
+                        %>
+                        <a href="../ProcessInvitiationRequest?invitationID=<%=tmp.getInviteID()%>&invitationRequest=<%=invitationRequest%>" ><input type="button" name="activityRequest" id="invitation_back" <%= appendInput%> /></a>
                     </td>
                 </tr>
             </table>
             <%
-                    }//close the for
-%>
+                }//close the for
+            %>
             <hr/>
             <input type="button" onclick="window.location='Menu.jsp'" value="Back" id="invitation_back"/>
             <br/>
