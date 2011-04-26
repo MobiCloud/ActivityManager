@@ -12,10 +12,9 @@ public class InvitationListMessage extends Message {
 		invitations = new InvitationItem[size];
 	}
 	
-	public InvitationListMessage(){
-		size = 0;
-		setSize(0);
-	}
+	public InvitationListMessage(){ }
+	
+	
 	
 	public int getSize() {
 		return size;
@@ -23,7 +22,6 @@ public class InvitationListMessage extends Message {
 
 	public void setSize(int size) {
 		this.size = size;
-		invitations = new InvitationItem[size];
 	}
 
 	public void setInvitation(int offset, InvitationItem item){

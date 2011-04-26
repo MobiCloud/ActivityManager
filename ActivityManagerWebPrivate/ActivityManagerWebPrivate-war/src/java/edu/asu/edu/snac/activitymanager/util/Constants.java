@@ -23,4 +23,7 @@ public class Constants {
     public static final int MINUTE_MAX = 59;
 
     public static final int PLAYERS_MAX = 9999;
+
+    public static final String INVITATION_JOIN = "join";
+    public static final String INVITATION_LEAVE = "leave";
 }
