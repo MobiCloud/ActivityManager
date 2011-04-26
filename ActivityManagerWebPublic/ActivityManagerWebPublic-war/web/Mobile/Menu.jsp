@@ -12,11 +12,55 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Activity Manager - Menu</title>
+        <link rel="stylesheet" type="text/css" href="CSS/menu.css" />
     </head>
     <body>
-        <ul>
-            <li><a href="AllInvitations.jsp">All Invitations</a></li>
-        </ul>
-        
+        <div id="menu_upper">
+            Public Information
+        </div>
+        <div id="menu_mid">
+        </div>
+        <div id="menu_main">
+            <table align="center">
+                <tr>
+                    <td    align="center">
+                        <img alt="logo"  src="images/function_icon.png" border="0">
+                        <br/>
+                        <a href="AllInvitations.jsp">All Invitations</a>
+                    </td>
+                    <td    align="center">
+                        <img alt="logo"  src="images/function_icon.png" border="0">
+                        <br/>
+                        Function 2
+                    </td>
+                </tr>
+                <tr>
+                    <td    align="center">
+                        <img alt="logo"  src="images/function_icon.png" border="0">
+                        <br/>
+                        Function 3
+                    </td>
+                    <td    align="center">
+                        <img alt="logo"  src="images/function_icon.png" border="0">
+                        <br/>
+                        Function 4
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <br/>
+        <div id="menu_buttom">
+        <table align="center">
+        <tr>
+            <td>
+        <img alt="logo_mobicloud"  src="images/mobicloud.png" border="0">
+            </td>
+            <td>
+        This site is created for CSE 486<br/>
+        Arizona State University<br/>
+            </td>
+        </tr>
+        </table>
+        </div>
     </body>
 </html>

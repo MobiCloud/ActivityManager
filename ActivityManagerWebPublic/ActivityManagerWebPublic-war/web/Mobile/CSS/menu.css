@@ -1,0 +1,53 @@
+body
+{
+    background-color: #ffffff;
+    margin:0px;
+}
+
+#menu_upper
+{
+    background-color: #218ab9;
+    font-weight: bold;
+    font-size: 0.8in;
+    color: #ffffff;
+    height: 50%;
+    text-align: center;
+    padding-top:0.2in;
+}
+
+#menu_mid
+{
+    margin-top: -5px;
+    height:99px;
+    background-image: url("../images/upper_back.jpg");
+    background-repeat: repeat-x;
+}
+
+#menu_main
+{
+    text-align: right;
+    font-size: 0.4in;
+    padding-right: 20px;
+    color: #000000;
+    font-weight: bold;
+}
+
+#menu_buttom
+{
+    text-align: center;
+    font-weight: bold;
+    color: #000000;
+    font-size: 0.4in;
+    background-color: #7cc7e9;
+}
+
+a:link
+{
+    text-decoration: none;
+    color: #000000;
+}
+
+a:visited
+{
+    color: #000000;
+}
