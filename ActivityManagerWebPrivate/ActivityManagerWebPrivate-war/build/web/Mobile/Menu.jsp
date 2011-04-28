@@ -17,6 +17,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Activity Manager - Menu - <%= loggedInUser %></title>
         <link rel="stylesheet" type="text/css" href="CSS/menu.css" />
+        <link rel="icon" type="image/x-icon" href="../favicon.ico">
     </head>
     <body>
         <div id="menu_upper">
@@ -32,7 +33,7 @@
             <hr/>
         <div class="menu_items"><a href="AllInvitations.jsp">All Invitations</a></div>
             <hr/>
-        <div class="menu_items"><a href="Login.jsp">Log out</a></div>
+        <div class="menu_items"><a href="../Logout">Logout</a></div>
             <hr/>
         </div>
     </body>

@@ -22,6 +22,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title><%= loggedInUser%>'s Wish List</title>
         <link rel="stylesheet" type="text/css" href="CSS/wishList.css" />
+        <link rel="icon" type="image/x-icon" href="../favicon.ico">
     </head>
     <body>
     <div id="wish_upper">

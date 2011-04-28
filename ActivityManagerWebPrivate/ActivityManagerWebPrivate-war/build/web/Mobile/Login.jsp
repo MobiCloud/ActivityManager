@@ -13,6 +13,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Activity Manager - Login</title>
         <link rel="stylesheet" type="text/css" href="CSS/css.css" />
+        <link rel="icon" type="image/x-icon" href="../favicon.ico" />
     </head>
     <body>
         <div id="login_upper">

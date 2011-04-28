@@ -16,6 +16,18 @@
         <servlet-name>RegisterNewUser</servlet-name>
         <servlet-class>eas.asu.edu.snac.activitymanager.servlets.RegisterNewUser</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>JoinInvitation</servlet-name>
+        <servlet-class>eas.asu.edu.snac.activitymanager.servlets.JoinInvitation</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LeaveInvitation</servlet-name>
+        <servlet-class>eas.asu.edu.snac.activitymanager.servlets.LeaveInvitation</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Logout</servlet-name>
+        <servlet-class>eas.asu.edu.snac.activitymanager.servlets.Logout</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CheckLogin</servlet-name>
         <url-pattern>/CheckLogin</url-pattern>
@@ -31,6 +43,18 @@
     <servlet-mapping>
         <servlet-name>RegisterNewUser</servlet-name>
         <url-pattern>/RegisterNewUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>JoinInvitation</servlet-name>
+        <url-pattern>/JoinInvitation</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LeaveInvitation</servlet-name>
+        <url-pattern>/LeaveInvitation</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Logout</servlet-name>
+        <url-pattern>/Logout</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
