@@ -21,6 +21,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title><%= loggedInUser%>'s Invitations</title>
+        <link rel="icon" type="image/x-icon" href="../favicon.ico" />
 	<link rel="stylesheet" type="text/css" href="CSS/invitationList.css" />
     </head>
     <body>
@@ -65,6 +66,7 @@
         %>
         <hr/>
         <input type="button" onclick="window.location='Menu.jsp'" value="Back" class="invitationNew_buttom"/>
-	</div>		
+	</div>
+        <br/><br/>
     </body>
 </html>

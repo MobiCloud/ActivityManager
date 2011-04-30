@@ -13,6 +13,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Activity Manager - Login</title>
         <link rel="stylesheet" type="text/css" href="CSS/css.css" />
+        <link rel="icon" type="image/x-icon" href="../favicon.ico" />
     </head>
     <body>
         <div id="login_upper">
@@ -32,8 +33,17 @@
         </div>
         <br/>
         <div id="login_buttom">
+        <table align="center">
+        <tr>
+            <td>
+        <img alt="logo_mobicloud"  src="images/mobicloud.png" border="0">
+            </td>
+            <td>
         This site is created for CSE 486<br/>
         Arizona State University<br/>
+            </td>
+        </tr>
+        </table>
         </div>
     </body>  
 </html>

@@ -21,7 +21,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>All Invitations</title>
-        <link rel="stylesheet" type="text/css" href="CSS/invitation.css" />
+	<link rel="stylesheet" type="text/css" href="CSS/invitation.css" />
+        <link rel="icon" type="image/x-icon" href="../favicon.ico" />
     </head>
     <body>
         <div id="invitation_upper">
@@ -57,7 +58,7 @@
                     <td   align="left" width="40%">Start time: <%= tmp.getStarttime()%></td><td   align="left" width="40%">End time: <%= tmp.getEndtime()%></td>
                 </tr>
                 <tr>
-                    <td   align="left" width="40%">Activity location: <%= tmp.getLocation()%></td><td   align="left" width="40%">Maximum players wanted: <%= tmp.getMaxgamer()%></td>
+                <td   align="left" width="40%">Activity location: <%= tmp.getLocation() %></td><td   align="left" width="40%">Players: <%= tmp.getCurrentgamer() + "/" + tmp.getMaxgamer() %></td>
                 </tr>
                 <tr>
                     <td colspan="2">
@@ -78,12 +79,31 @@
                     </td>
                 </tr>
             </table>
+
+            <%
+            //if the game is not full and the user is not on the game, join it.
+            if(tmp.getCurrentgamer() < tmp.getMaxgamer() && !tmp.isUserOnGame()){
+                //print the join button
+                %>
+                <a href="../JoinInvitation?username=<%= loggedInUser%>&inviteID=<%= tmp.getInviteID() %>"><button>Join</button></a>
+                <%
+            }else if(tmp.isUserOnGame()){
+                %>
+                <a href="../LeaveInvitation?username=<%= loggedInUser%>&inviteID=<%= tmp.getInviteID() %>"><button>Quit</button></a>
+                <%
+            }else if(tmp.getCurrentgamer() >= tmp.getMaxgamer()){
+                %>
+                <button enabled="false">Full</button>
+                <%
+            }
+            %>
+
             <%
                 }//close the for
             %>
             <hr/>
             <input type="button" onclick="window.location='Menu.jsp'" value="Back" id="invitation_back"/>
-            <br/>
+    <br/><br/>
         </div>
     </body>
 </html>

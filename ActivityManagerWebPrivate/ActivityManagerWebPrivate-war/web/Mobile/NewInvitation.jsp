@@ -17,6 +17,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Add Invitation</title>
         <link rel="stylesheet" type="text/css" href="CSS/invitationList.css" />
+        <link rel="icon" type="image/x-icon" href="../favicon.ico" />
         <%@include file="../WEB-INF/jspf/jsCalendarInclude.jspf" %>
     </head>
     <body>

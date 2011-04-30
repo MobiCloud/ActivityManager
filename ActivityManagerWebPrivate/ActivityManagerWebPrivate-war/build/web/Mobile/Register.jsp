@@ -12,10 +12,11 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <title>Register New User</title>
         <link rel="stylesheet" type="text/css" href="CSS/css.css" />
+        <link rel="icon" type="image/x-icon" href="../favicon.ico" />
     </head>
     <body>
-        <div id="register_upper" style="height: 70%; background-color:#bc1d1d; text-align: center; ">
-            <img alt="re_upper"  src="images/register_upper.jpg" border="0" style="width:70%;"/>
+        <div id="register_upper" style="background-color:#218ab9; text-align: center; ">
+            <img alt="re_upper"  src="images/register_upper.jpg" border="0" style="width:60%;"/>
         </div>
         <div id="register_mid">
         </div>
