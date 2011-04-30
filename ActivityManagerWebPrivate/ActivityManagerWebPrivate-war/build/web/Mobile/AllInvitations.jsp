@@ -21,7 +21,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>All Invitations</title>
-		<link rel="stylesheet" type="text/css" href="CSS/invitation.css" />
+	<link rel="stylesheet" type="text/css" href="CSS/invitation.css" />
         <link rel="icon" type="image/x-icon" href="../favicon.ico" />
     </head>
     <body>
@@ -66,38 +66,28 @@
                             String appendInput = "";
                             String invitationRequest = "";
                             if (tmp.isUserOnGame()) {
+                                %>
+                                <a href="../LeaveInvitation?username=<%= loggedInUser%>&inviteID=<%= tmp.getInviteID() %>">
+                                <%
                                 appendInput = "value=\"Leave\"";
                                 invitationRequest = Constants.INVITATION_LEAVE;
                             } else if (tmp.getCurrentgamer() == tmp.getMaxgamer()) {
+                                %>
+                                <a href="">
+                                <%
                                 appendInput = "value=\"Full\" disabled=\"true\"";
                             } else {
+                                %>
+                                <a href="../JoinInvitation?username=<%= loggedInUser%>&inviteID=<%= tmp.getInviteID() %>">
+                                <%
                                 appendInput = "value=\"Join\"";
                                 invitationRequest = Constants.INVITATION_JOIN;
                             }
                         %>
-                        <a href="../ProcessInvitiationRequest?invitationID=<%=tmp.getInviteID()%>&invitationRequest=<%=invitationRequest%>" ><input type="button" name="activityRequest" id="invitation_back" <%= appendInput%> /></a>
+                        <input type="button" name="activityRequest" id="invitation_back" <%= appendInput%> /></a>
                     </td>
                 </tr>
             </table>
-
-            <%
-            //if the game is not full and the user is not on the game, join it.
-            if(tmp.getCurrentgamer() < tmp.getMaxgamer() && !tmp.isUserOnGame()){
-                //print the join button
-                %>
-                <a href="../JoinInvitation?username=<%= loggedInUser%>&inviteID=<%= tmp.getInviteID() %>"><button>Join</button></a>
-                <%
-            }else if(tmp.isUserOnGame()){
-                %>
-                <a href="../LeaveInvitation?username=<%= loggedInUser%>&inviteID=<%= tmp.getInviteID() %>"><button>Quit</button></a>
-                <%
-            }else if(tmp.getCurrentgamer() >= tmp.getMaxgamer()){
-                %>
-                <button enabled="false">Full</button>
-                <%
-            }
-            %>
-
             <%
                 }//close the for
             %>

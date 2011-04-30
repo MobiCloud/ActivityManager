@@ -17,12 +17,12 @@
         <servlet-class>eas.asu.edu.snac.activitymanager.servlets.RegisterNewUser</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>JoinInvitation</servlet-name>
-        <servlet-class>eas.asu.edu.snac.activitymanager.servlets.JoinInvitation</servlet-class>
-       </servlet>
-       <servlet>
         <servlet-name>ProcessInvitationRequest</servlet-name>
         <servlet-class>eas.asu.edu.snac.activitymanager.servlets.ProcessInvitationRequest</servlet-class>
+        </servlet>
+        <servlet>
+        <servlet-name>JoinInvitation</servlet-name>
+        <servlet-class>eas.asu.edu.snac.activitymanager.servlets.JoinInvitation</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>LeaveInvitation</servlet-name>
