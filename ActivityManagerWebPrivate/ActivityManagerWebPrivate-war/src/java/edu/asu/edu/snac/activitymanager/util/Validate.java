@@ -4,6 +4,11 @@
  */
 package edu.asu.edu.snac.activitymanager.util;
 
+import edu.asu.eas.snac.activitymanager.messages.InvitationItem;
+import edu.asu.eas.snac.activitymanager.messages.WishItem;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -131,6 +136,31 @@ public class Validate
     }
     
     /**
+     * Given a date and time in the following format MM/DD/YYYY and HH:mm
+     * it will return a string in the following format YYYYMMDDHHmm
+     * @param date
+     * @param time
+     * @return 
+     */
+    public static String StripDateAndTime( String date, String time )
+    {
+        StringBuffer formattedOutput = new StringBuffer();
+        // Append YYYY
+        formattedOutput.append( date.substring(6, date.length()) );
+        // Append MM
+        formattedOutput.append( date.substring(3, 5));
+        // Append DD
+        formattedOutput.append( date.substring(0,2));
+        
+        // Append HH
+        formattedOutput.append(time.substring(0,2));
+        // Append mm
+        formattedOutput.append(time.substring(3,time.length()));
+        
+        return formattedOutput.toString();
+    }
+    
+    /**
      * Checks if the given location is within the given length limitations.
      * @param location
      * @return 
@@ -174,10 +204,34 @@ public class Validate
         return currentMatcher.matches();
     }
     
+    public static ArrayList<String> sortMessages( WishItem[] wishItems, InvitationItem[] invitationItems )
+    {
+        ArrayList<String> messageCollection = new ArrayList<String>();
+        
+        // Obtain all the wish items and put them in the right format
+        for( WishItem wish : wishItems )
+        {
+            messageCollection.add( StripDateAndTime(wish.getDate(), wish.getStarttime()) + "BEGIN" + wish.getSeqNo() );
+//            messageCollection.add( StripDateAndTime(wish.getDate(), wish.getEndtime()) + "END" + wish.getSeqNo() );
+        }
+        
+        // Obtain all the invitation items and put them in the right format
+        for( InvitationItem invitation : invitationItems )
+        {
+            messageCollection.add( StripDateAndTime(invitation.getDate(), invitation.getStarttime()) + "BEGIN" + invitation.getSeqNo() );
+            messageCollection.add( StripDateAndTime(invitation.getDate(), invitation.getEndtime()) + "END" + invitation.getSeqNo() );
+        }
+        
+        // I'm not sure if this is the best way to sort this
+        Collections.sort( messageCollection );
+        
+        return messageCollection;
+    }
+    
     // TODO: Remove using for testing purposes
     public static void main( String[] args )
     {
         String username = "aoeuaoue";
-        System.out.println( Validate.Username(username) );
+        System.out.println( Validate.StripDateAndTime("11/25/2010", "21:47"));
     }
 }

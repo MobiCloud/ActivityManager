@@ -4,6 +4,7 @@
     Author     : Fred
 --%>
 
+<%@page import="edu.asu.eas.snac.activitymanager.messages.WishListMessage"%>
 <%@page import="edu.asu.edu.snac.activitymanager.util.Constants"%>
 <%@page import="edu.asu.edu.snac.activitymanager.util.CheckLoggedIn"%>
 <%@page import="edu.asu.eas.snac.activitymanager.messages.InvitationItem"%>
@@ -39,9 +40,11 @@
                 rwm.setVmURL("192.168.239.247");
                 rwm.setPortNumber(1337);
                 /** HACK */
+                
                 // Request the data giving the user as a parameter
                 rwm.setUsername(loggedInUser);
                 InvitationListMessage invitations = (InvitationListMessage) MessageSender.sendMessage(rwm);
+                WishListMessage wishes = (WishListMessage) MessageSender.sendMessage(rwm);
             %>
 
             <%
