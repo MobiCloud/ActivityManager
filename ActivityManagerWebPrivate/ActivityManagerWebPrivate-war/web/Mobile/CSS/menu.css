@@ -29,6 +29,15 @@ body
     font-weight: bold;
 }
 
+.menu_items_special
+{
+    text-align: right;
+    font-size: 0.7in;
+    padding-right: 20px;
+    color: #CC0000;
+    font-weight: bold;
+}
+
 a:link
 {
     text-decoration: none;

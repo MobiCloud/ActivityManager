@@ -4,6 +4,7 @@
     Author     : Fred
 --%>
 
+<%@page import="java.util.ArrayList"%>
 <%@page import="edu.asu.eas.snac.activitymanager.messages.WishListMessage"%>
 <%@page import="edu.asu.edu.snac.activitymanager.util.Constants"%>
 <%@page import="edu.asu.edu.snac.activitymanager.util.CheckLoggedIn"%>
@@ -16,6 +17,17 @@
     "http://www.w3.org/TR/html4/loose.dtd">
 <%
     String loggedInUser = CheckLoggedIn.checkLoggedIn(request, response);
+
+    ArrayList<String> highlightList = new ArrayList<String>();
+    String highlightString = request.getParameter("highlight");
+    if(highlightString != null)
+    {
+        String[] spl = highlightString.split(",");
+        for(String s : spl)
+        {
+            highlightList.add(s);
+        }
+    }
 %>
 
 <html>
@@ -33,7 +45,7 @@
         </div>
         <div id="invitation_table">
             <%
-                //get the wishes
+                //get the invitations
                 GetAllInvitationMessagePublicVM rwm = new GetAllInvitationMessagePublicVM();
 
                 /** HACK: This section is hardcoded it must changed!! */
@@ -44,16 +56,17 @@
                 // Request the data giving the user as a parameter
                 rwm.setUsername(loggedInUser);
                 InvitationListMessage invitations = (InvitationListMessage) MessageSender.sendMessage(rwm);
-                WishListMessage wishes = (WishListMessage) MessageSender.sendMessage(rwm);
             %>
 
             <%
                 // TODO: Need to handle exception like it was done for the invitations
+                boolean shouldIhighlight = false;
                 for (int i = 0; invitations != null && invitations.getAllItems() != null && i < invitations.getAllItems().length; i++) {
                     InvitationItem tmp = invitations.getItem(i);
+                    shouldIhighlight = highlightList.contains("" + tmp.getInviteID());
             %>
             <hr/>
-            <table align="center">
+            <table align="center" <%= shouldIhighlight ? "class=\"invitation_special_border\"" : "" %>>
                 <tr>
                     <td   align="left" width="40%">Sport type: <%= tmp.getSport()%></td><td   align="left"  width="40%">Date: <%= tmp.getDate()%></td>
                 </tr>

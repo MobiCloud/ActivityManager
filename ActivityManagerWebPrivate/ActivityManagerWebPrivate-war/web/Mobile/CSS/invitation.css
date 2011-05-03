@@ -40,3 +40,10 @@ body
     border-bottom-style: none;
     border-width: 1px;
 }
+
+.invitation_special_border
+{
+    border-style:dashed;
+    border-color:#C00;
+    border-width:5px;
+}

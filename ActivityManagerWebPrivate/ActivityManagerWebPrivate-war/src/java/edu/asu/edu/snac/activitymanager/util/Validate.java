@@ -6,11 +6,12 @@ package edu.asu.edu.snac.activitymanager.util;
 
 import edu.asu.eas.snac.activitymanager.messages.InvitationItem;
 import edu.asu.eas.snac.activitymanager.messages.WishItem;
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.servlet.jsp.JspWriter;
 
 /**
  *
@@ -144,13 +145,13 @@ public class Validate
      */
     public static String StripDateAndTime( String date, String time )
     {
-        StringBuffer formattedOutput = new StringBuffer();
+        StringBuilder formattedOutput = new StringBuilder();
         // Append YYYY
         formattedOutput.append( date.substring(6, date.length()) );
-        // Append MM
-        formattedOutput.append( date.substring(3, 5));
         // Append DD
         formattedOutput.append( date.substring(0,2));
+        // Append MM
+        formattedOutput.append( date.substring(3, 5));
         
         // Append HH
         formattedOutput.append(time.substring(0,2));
@@ -204,28 +205,87 @@ public class Validate
         return currentMatcher.matches();
     }
     
-    public static ArrayList<String> sortMessages( WishItem[] wishItems, InvitationItem[] invitationItems )
+    public static ArrayList<String> findOverlappingInvitations( WishItem[] wishItems, InvitationItem[] invitationItems, JspWriter out )
+            throws IOException
     {
         ArrayList<String> messageCollection = new ArrayList<String>();
+        ArrayList<String> overlapInviteIDs = new ArrayList<String>();
+
         
         // Obtain all the wish items and put them in the right format
         for( WishItem wish : wishItems )
         {
-            messageCollection.add( StripDateAndTime(wish.getDate(), wish.getStarttime()) + "BEGIN" + wish.getSeqNo() );
-//            messageCollection.add( StripDateAndTime(wish.getDate(), wish.getEndtime()) + "END" + wish.getSeqNo() );
+            messageCollection.add( StripDateAndTime(wish.getDate(), wish.getStarttime()) + " BEGIN W" );
+            messageCollection.add( StripDateAndTime(wish.getDate(), wish.getEndtime()) + " END W" );
         }
         
         // Obtain all the invitation items and put them in the right format
         for( InvitationItem invitation : invitationItems )
         {
-            messageCollection.add( StripDateAndTime(invitation.getDate(), invitation.getStarttime()) + "BEGIN" + invitation.getSeqNo() );
-            messageCollection.add( StripDateAndTime(invitation.getDate(), invitation.getEndtime()) + "END" + invitation.getSeqNo() );
+            if(!invitation.isUserOnGame()){
+                messageCollection.add( StripDateAndTime(invitation.getDate(), invitation.getStarttime()) + " BEGIN " + invitation.getInviteID() );
+                messageCollection.add( StripDateAndTime(invitation.getDate(), invitation.getEndtime()) + " END " + invitation.getInviteID() );
+            }
         }
         
         // I'm not sure if this is the best way to sort this
+        // it is!
         Collections.sort( messageCollection );
+
+        for(String s : messageCollection){
+            out.println(s + "<br/>");
+            out.println("&nbsp; is wish: " + isWish(s) + "<br/>");
+        }
+
+        //try to find any 'nested' invitations
+        int wishActiveCount = 0;
+        ArrayList<String> openInvites = new ArrayList<String>();
+        for(String s : messageCollection){
+            //if we are in the span of a wish, and we find an invitation, save the ID
+            String iid = getInviteID(s);
+            if(wishActiveCount > 0 && !isWish(s)){
+                if(!overlapInviteIDs.contains(iid))
+                    overlapInviteIDs.add(iid);
+            }
+            if(isWish(s)){
+                //if a wish is beginning, increment wishActiveCount
+                if(isItemBeginning(s)){
+                    wishActiveCount++;
+                    //add each wish that is currently open
+                    out.println("opening a wish with " + openInvites.size() + " invites.<br/>");
+                    for(String tmp : openInvites){
+                        if(!overlapInviteIDs.contains(tmp))
+                            overlapInviteIDs.add(tmp);
+                    }
+                }
+                //if it's ending, decrement.
+                else
+                    wishActiveCount--;
+            }
+            else{
+                if(isItemBeginning(s)){
+                    openInvites.add(iid);
+                }
+                else{
+                    openInvites.remove(iid);
+                }
+            }
+        }
         
-        return messageCollection;
+        return overlapInviteIDs;
+    }
+
+    private static boolean isWish(String s){
+        return s.endsWith("W");
+    }
+
+    private static String getInviteID(String s){
+        String tmp = s.substring(s.lastIndexOf(" ") + 1);
+        return tmp.trim();
+    }
+
+    private static boolean isItemBeginning(String s){
+        return s.contains(" BEGIN ");
     }
     
     // TODO: Remove using for testing purposes
