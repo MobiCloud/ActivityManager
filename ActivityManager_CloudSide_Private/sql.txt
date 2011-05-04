@@ -1,0 +1,35 @@
+create database mobicloud CHARACTER SET utf8 COLLATE utf8_general_ci;
+use mobicloud;
+
+create table INVITATION(inviteID INT NOT NULL AUTO_INCREMENT PRIMARY KEY, username VARCHAR(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci, 
+	sport VARCHAR(30), date VARCHAR(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci, 
+	starttime VARCHAR(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci, 
+	endtime VARCHAR(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci, 
+	location VARCHAR(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci, 
+	currentgamer INT,
+	maxgamer INT) CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+	
+create table USERSININVITATIONS(
+	inviteUserID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	username VARCHAR(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
+	inviteID INT
+	) CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+	
+create table USERS(userID INT NOT NULL AUTO_INCREMENT PRIMARY KEY, 
+	username VARCHAR(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci, 
+	password VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci, 
+	IMEI VARCHAR(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci, 
+	email VARCHAR(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci, 
+	phoneNum VARCHAR(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci, 
+	portNum VARCHAR(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci, 
+	sessionID VARCHAR(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci, 
+	creationDate VARCHAR(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci, 
+	lastLogin VARCHAR(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci) CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+	
+create table WISHES(wishID INT NOT NULL AUTO_INCREMENT PRIMARY KEY, 
+	username VARCHAR(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci, 
+	sport VARCHAR(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci, 
+	date VARCHAR(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci, 
+	starttime VARCHAR(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci, 
+	endtime VARCHAR(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci, 
+	location VARCHAR(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci) CHARACTER SET utf8 COLLATE utf8_unicode_ci;

@@ -1,0 +1,114 @@
+8
+
+dir
+32
+https://mobicloud.googlecode.com/svn/trunk/ActivityManager_CloudSide
+https://mobicloud.googlecode.com/svn
+
+
+
+2010-12-02T02:42:54.447611Z
+32
+gxiong6
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+d6138e05-0a1f-3944-7473-f7297bc07e78
+
+.classpath
+file
+
+
+
+
+2010-11-24T06:34:05.000000Z
+c4230ce573f5634712a3c6201fa1e93c
+2010-11-24T06:34:40.407680Z
+7
+fred.morstatter@gmail.com
+has-props
+
+.project
+file
+
+
+
+
+2010-11-24T06:30:44.000000Z
+af758000dab1340ebdb1a7c30533e393
+2010-11-24T06:11:14.495676Z
+2
+j.v.trigueros
+has-props
+
+.settings
+dir
+
+gson-1.5.jar
+file
+
+
+
+
+2010-11-24T01:07:12.000000Z
+1b0b78c646e2479d494468a637ffcf35
+2010-11-24T06:34:40.407680Z
+7
+fred.morstatter@gmail.com
+has-props
+
+mysql-connector-java-5.1.13-bin.jar
+file
+
+
+
+
+2010-11-24T06:30:40.000000Z
+a62d90f00a8f18cafe2cc05d97cb8036
+2010-11-24T06:11:14.495676Z
+2
+j.v.trigueros
+has-props
+
+sql.txt
+file
+
+
+
+
+2010-11-29T17:59:42.000000Z
+c8dacd44ec5a2e9d4226f92bcd34ec36
+2010-11-29T18:00:16.395554Z
+24
+fred.morstatter@gmail.com
+
+src
+dir
+
+svn
+dir
+
+toplink-essentials-2.0-50.jar
+file
+
+
+
+
+2010-11-24T06:30:44.000000Z
+f4dc3617239ed5d70629828f72a722d3
+2010-11-24T06:11:14.495676Z
+2
+j.v.trigueros
+has-props
+

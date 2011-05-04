@@ -1,0 +1,67 @@
+package edu.asu.eas.snac.activitymanager.entities;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+//create table wishes(wishID INT NOT NULL AUTO_INCREMENT, sport VARCHAR(20), date VARCHAR(20), starttime VARCHAR(20), endtime VARCHAR(20), location VARCHAR(40), primary key (wishID));
+@Entity(name="wishes")
+public class Wish {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int wishID;
+	private String username;
+	private String sport;
+	private String date;
+	private String starttime;
+	private String endtime;
+	private String location;
+	
+	
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public int getWishID() {
+		return wishID;
+	}
+	public void setWishID(int wishID) {
+		this.wishID = wishID;
+	}
+	public String getSport() {
+		return sport;
+	}
+	public void setSport(String sport) {
+		this.sport = sport;
+	}
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
+	}
+	public String getStarttime() {
+		return starttime;
+	}
+	public void setStarttime(String starttime) {
+		this.starttime = starttime;
+	}
+	public String getEndtime() {
+		return endtime;
+	}
+	public void setEndtime(String endtime) {
+		this.endtime = endtime;
+	}
+	public String getLocation() {
+		return location;
+	}
+	public void setLocation(String location) {
+		this.location = location;
+	}
+	
+	
+}

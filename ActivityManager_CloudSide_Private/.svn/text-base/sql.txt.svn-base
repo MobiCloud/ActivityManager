@@ -1,0 +1,9 @@
+create database mobicloud
+
+use mobicloud
+
+create table invitation(inviteID INT NOT NULL AUTO_INCREMENT PRIMARY KEY, username VARCHAR(30), sport VARCHAR(30), date VARCHAR(30), starttime VARCHAR(30), endtime VARCHAR(30), location VARCHAR(30), maxgamer INT);
+
+create table users(userID INT NOT NULL AUTO_INCREMENT PRIMARY KEY, username VARCHAR(30), password VARCHAR(30), IMEI VARCHAR(30), email VARCHAR(30), phoneNum VARCHAR(30), portNum VARCHAR(30), sessionID VARCHAR(30), creationDate VARCHAR(30), lastLogin VARCHAR(30));
+
+create table wishes(wishID INT NOT NULL AUTO_INCREMENT PRIMARY KEY, username VARCHAR(30), sport VARCHAR(30), date VARCHAR(30), starttime VARCHAR(30), endtime VARCHAR(30), location VARCHAR(30));

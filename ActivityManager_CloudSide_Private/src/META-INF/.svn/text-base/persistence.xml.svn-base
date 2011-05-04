@@ -1,0 +1,23 @@
+<!--
+
+Make sure to change these settings to your requirements!!
+
+-->
+
+
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="1.0">
+	<persistence-unit name="mobicloud">
+		<provider>oracle.toplink.essentials.ejb.cmp3.EntityManagerFactoryProvider</provider>
+		<class>edu.asu.eas.snac.activitymanager.entities.Invitation</class>
+		<class>edu.asu.eas.snac.activitymanager.entities.User</class>
+		<class>edu.asu.eas.snac.activitymanager.entities.Wish</class>
+		<properties>
+			<property name="toplink.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+			<property name="toplink.jdbc.url" value="jdbc:mysql://localhost/mobicloud"/>
+			<property name="toplink.jdbc.user" value="root"/>
+			<property name="toplink.jdbc.password" value="040220"/>
+			<!-- Provider-specific settings -->
+			<property name="toplink.logging.level" value="INFO"/>
+		</properties>
+	</persistence-unit>
+</persistence>

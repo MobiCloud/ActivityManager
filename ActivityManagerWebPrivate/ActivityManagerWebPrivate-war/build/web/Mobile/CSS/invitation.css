@@ -1,0 +1,49 @@
+body
+{
+    background-color: #ffffff;
+    margin:0px;
+}
+
+#invitation_upper
+{
+    background-color: #218ab9;
+    height: 70%;
+    text-align: center;
+    padding-top:3%;
+}
+
+#invitation_mid
+{
+    height:99px;
+    background-image: url("../images/upper_back.jpg");
+    background-repeat: repeat-x;
+}
+
+#invitation_table
+{
+    font-size: 0.4in;
+    color:#000000;
+    border: 0;
+    text-align: center;
+}
+
+#invitation_back
+{
+    width: 40%;
+    background-color: #218ab9;
+    color: #ffffff;
+    text-align: center;
+    font-weight: bold;
+    font-size: 0.3in;
+    height: 0.6in;
+    border-bottom-color: #000000;
+    border-bottom-style: none;
+    border-width: 1px;
+}
+
+.invitation_special_border
+{
+    border-style:dashed;
+    border-color:#C00;
+    border-width:5px;
+}
